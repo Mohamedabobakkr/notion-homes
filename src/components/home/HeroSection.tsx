@@ -13,7 +13,7 @@ export const HeroSection: React.FC = () => {
       {/* Animated Background */}
       <div className="absolute inset-0">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-dark via-teal-primary to-teal-accent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-olive via-charcoal-green to-slate-gray" />
 
         {/* Animated Circles */}
         <motion.div
@@ -26,7 +26,7 @@ export const HeroSection: React.FC = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-teal-accent rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-slate-gray-light rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -38,7 +38,7 @@ export const HeroSection: React.FC = () => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-sage rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-sage-tan rounded-full blur-3xl"
         />
 
         {/* Floating Shapes */}
@@ -54,7 +54,7 @@ export const HeroSection: React.FC = () => {
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-teal-dark/20 via-transparent to-teal-dark/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-olive/20 via-transparent to-charcoal-green/40" />
       </div>
 
       {/* Content */}
@@ -71,9 +71,9 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-8 text-white"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-8 text-cream-light"
             >
-              <span className="w-2 h-2 bg-sage rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-sage-tan rounded-full animate-pulse" />
               <span className="text-sm font-semibold tracking-wider">Trusted UK-Egypt Property Bridge</span>
             </motion.div>
 
@@ -82,12 +82,12 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white mb-8 leading-[1.1]"
+              className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-cream-light mb-8 leading-[1.1]"
             >
               Discover Your
               <br />
               <span className="relative inline-block mt-2">
-                <span className="relative z-10 bg-gradient-to-r from-cream-mint via-sage-light to-cream-light bg-clip-text text-transparent">
+                <span className="relative z-10 bg-gradient-to-r from-cream-light via-sage-tan to-cream-dark bg-clip-text text-transparent">
                   Egyptian Dream
                 </span>
                 <motion.div
@@ -106,10 +106,10 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12 leading-relaxed font-light"
+              className="text-xl md:text-2xl text-cream-light/90 max-w-3xl mx-auto mb-12 leading-relaxed font-light"
             >
               Luxury properties across Hurghada, El Gouna, North Coast & Cairo.
-              <span className="block mt-2 text-cream-mint font-medium">Your gateway to Mediterranean living.</span>
+              <span className="block mt-2 text-cream-light font-medium">Your gateway to Mediterranean living.</span>
             </motion.p>
 
             {/* CTA Buttons */}
@@ -152,10 +152,10 @@ export const HeroSection: React.FC = () => {
                     transition={{ delay: 1 + index * 0.1, duration: 0.6 }}
                     className="text-center"
                   >
-                    <div className="text-4xl md:text-5xl font-extrabold text-cream-mint mb-2 tabular-nums">
+                    <div className="text-4xl md:text-5xl font-extrabold text-sage-tan mb-2 tabular-nums">
                       {stat.value}
                     </div>
-                    <div className="text-white/80 text-sm md:text-base font-medium">
+                    <div className="text-cream-light/80 text-sm md:text-base font-medium">
                       {stat.label}
                     </div>
                   </motion.div>
@@ -176,12 +176,12 @@ export const HeroSection: React.FC = () => {
         <motion.div
           animate={{ y: [0, 12, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-8 h-12 border-2 border-white/40 rounded-full flex items-start justify-center p-2"
+          className="w-8 h-12 border-2 border-cream-light/40 rounded-full flex items-start justify-center p-2"
         >
           <motion.div
             animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
             transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-            className="w-1.5 h-2.5 bg-cream-mint rounded-full"
+            className="w-1.5 h-2.5 bg-sage-tan rounded-full"
           />
         </motion.div>
       </motion.div>

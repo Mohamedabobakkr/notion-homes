@@ -29,11 +29,11 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyles = 'inline-flex items-center justify-center gap-3 font-semibold transition-all duration-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group';
 
   const variants = {
-    primary: 'bg-gradient-to-r from-teal-primary to-teal-accent text-white shadow-lg hover:shadow-xl hover:shadow-teal-primary/30 hover:scale-[1.02] active:scale-[0.98]',
-    secondary: 'bg-gradient-to-r from-teal-dark to-teal-primary text-white shadow-lg hover:shadow-xl hover:shadow-teal-dark/30 hover:scale-[1.02] active:scale-[0.98]',
-    outline: 'border-2 border-teal-primary text-teal-primary hover:bg-teal-primary hover:text-white hover:border-teal-primary shadow-sm hover:shadow-md',
-    ghost: 'text-teal-primary hover:bg-teal-primary/10 hover:text-teal-dark',
-    glass: 'glass text-teal-dark hover:bg-white/90 shadow-md hover:shadow-lg',
+    primary: 'bg-gradient-to-r from-dark-olive to-slate-gray text-cream-light shadow-lg hover:shadow-xl hover:shadow-dark-olive/30 hover:scale-[1.02] active:scale-[0.98]',
+    secondary: 'bg-gradient-to-r from-charcoal-green to-slate-gray text-cream-light shadow-lg hover:shadow-xl hover:shadow-charcoal-green/30 hover:scale-[1.02] active:scale-[0.98]',
+    outline: 'border-2 border-dark-olive text-dark-olive hover:bg-dark-olive hover:text-cream-light hover:border-dark-olive shadow-sm hover:shadow-md',
+    ghost: 'text-dark-olive hover:bg-sage-tan/20 hover:text-charcoal-green',
+    glass: 'glass text-dark-olive hover:bg-white/90 shadow-md hover:shadow-lg',
   };
 
   const sizes = {

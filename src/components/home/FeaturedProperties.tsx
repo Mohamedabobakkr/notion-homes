@@ -29,13 +29,13 @@ export const FeaturedProperties: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-teal-primary text-lg mb-4 tracking-wider uppercase font-medium">
+          <p className="text-slate-gray text-lg mb-4 tracking-wider uppercase font-medium">
             Handpicked Selection
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-teal-dark mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-olive mb-6">
             Featured Properties
           </h2>
-          <p className="text-teal-primary/80 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-slate-gray/80 text-lg md:text-xl max-w-3xl mx-auto">
             Discover our carefully curated collection of luxury properties across Egypt's
             most prestigious locations.
           </p>

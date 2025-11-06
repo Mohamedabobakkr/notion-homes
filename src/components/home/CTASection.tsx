@@ -10,11 +10,11 @@ import { contactInfo } from '@/data/contact';
 
 export const CTASection: React.FC = () => {
   return (
-    <section className="section-padding-lg bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white relative overflow-hidden">
+    <section className="section-padding-lg bg-gradient-to-br from-dark-olive via-charcoal-green to-slate-gray text-white relative overflow-hidden">
       {/* Decorative Elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold-500 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-sage-tan rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-sage-tan rounded-full blur-3xl" />
       </div>
 
       <Container className="relative z-10">
@@ -27,9 +27,9 @@ export const CTASection: React.FC = () => {
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             Ready to Find Your
-            <span className="text-gold-400"> Dream Property</span>?
+            <span className="text-sage-tan"> Dream Property</span>?
           </h2>
-          <p className="text-sand-100 text-lg md:text-xl mb-12 leading-relaxed">
+          <p className="text-cream-light text-lg md:text-xl mb-12 leading-relaxed">
             Our expert team is here to guide you through every step of your Egyptian
             property journey. From viewing to purchase, we make it seamless.
           </p>
@@ -50,7 +50,7 @@ export const CTASection: React.FC = () => {
             <motion.a
               href={`tel:${contactInfo.phone.uk.replace(/\s/g, '')}`}
               whileHover={{ scale: 1.05 }}
-              className="bg-gold-500 hover:bg-gold-600 p-6 rounded-xl flex flex-col items-center gap-3 transition-colors"
+              className="bg-sage-tan hover:bg-sage-tan-dark p-6 rounded-xl flex flex-col items-center gap-3 transition-colors"
             >
               <FaPhone className="text-4xl" />
               <span className="font-medium">Call Us Now</span>
@@ -59,7 +59,7 @@ export const CTASection: React.FC = () => {
             <motion.a
               href={`mailto:${contactInfo.email}`}
               whileHover={{ scale: 1.05 }}
-              className="bg-navy-700 hover:bg-navy-600 p-6 rounded-xl flex flex-col items-center gap-3 transition-colors"
+              className="bg-slate-gray hover:bg-slate-gray-light p-6 rounded-xl flex flex-col items-center gap-3 transition-colors"
             >
               <FaEnvelope className="text-4xl" />
               <span className="font-medium">Email Us</span>
@@ -74,7 +74,7 @@ export const CTASection: React.FC = () => {
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="!border-white !text-white hover:!bg-white hover:!text-navy-900">
+              <Button size="lg" variant="outline" className="!border-white !text-white hover:!bg-white hover:!text-dark-olive">
                 Schedule Consultation
               </Button>
             </Link>

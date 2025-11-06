@@ -50,10 +50,10 @@ export const Navbar: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               className="flex flex-col"
             >
-              <span className="text-2xl md:text-3xl font-extrabold text-teal-dark font-heading">
+              <span className="text-2xl md:text-3xl font-extrabold text-dark-olive font-heading">
                 Notion Homes
               </span>
-              <span className="text-xs text-teal-primary tracking-widest uppercase font-semibold">
+              <span className="text-xs text-slate-gray tracking-widest uppercase font-semibold">
                 Luxury Egyptian Properties
               </span>
             </motion.div>
@@ -67,13 +67,13 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 className={`text-base font-semibold transition-colors relative group ${
                   pathname === link.href
-                    ? 'text-teal-primary'
-                    : 'text-teal-dark hover:text-teal-primary'
+                    ? 'text-charcoal-green'
+                    : 'text-dark-olive hover:text-slate-gray'
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-teal-primary transition-all ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-slate-gray transition-all ${
                     pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="tel:+442012345678"
-              className="text-teal-primary hover:text-teal-accent transition-colors"
+              className="text-slate-gray hover:text-slate-gray-light transition-colors"
             >
               <FaPhone className="text-xl" />
             </a>
@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-teal-dark text-2xl focus:outline-none hover:text-teal-primary transition-colors"
+            className="lg:hidden text-dark-olive text-2xl focus:outline-none hover:text-slate-gray transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <FaTimes /> : <FaBars />}
@@ -123,8 +123,8 @@ export const Navbar: React.FC = () => {
                     href={link.href}
                     className={`block text-lg font-semibold transition-colors ${
                       pathname === link.href
-                        ? 'text-teal-primary'
-                        : 'text-teal-dark hover:text-teal-primary'
+                        ? 'text-charcoal-green'
+                        : 'text-dark-olive hover:text-slate-gray'
                     }`}
                   >
                     {link.label}
@@ -133,7 +133,7 @@ export const Navbar: React.FC = () => {
                 <div className="pt-4 space-y-3">
                   <a
                     href="tel:+442012345678"
-                    className="flex items-center gap-2 text-teal-dark hover:text-teal-primary transition-colors font-semibold"
+                    className="flex items-center gap-2 text-dark-olive hover:text-slate-gray transition-colors font-semibold"
                   >
                     <FaPhone /> Call Us
                   </a>
