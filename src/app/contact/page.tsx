@@ -59,13 +59,13 @@ export default function ContactPage() {
       <Toaster position="top-center" />
       <main className="pt-32 pb-20">
         {/* Hero */}
-        <section className="bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white py-20">
+        <section className="bg-gradient-to-br from-dark-olive via-charcoal-green to-slate-gray text-cream-light py-20">
           <Container>
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Get in <span className="text-gold-400">Touch</span>
+                Get in <span className="text-sage-tan">Touch</span>
               </h1>
-              <p className="text-sand-100 text-lg md:text-xl leading-relaxed">
+              <p className="text-sage-tan text-lg md:text-xl leading-relaxed">
                 Have questions about Egyptian properties? Our expert team is here to help.
                 Reach out today and let's start your property journey.
               </p>
@@ -74,13 +74,13 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Form & Info */}
-        <section className="section-padding bg-sand-50">
+        <section className="section-padding bg-slate-gray">
           <Container>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               {/* Contact Form */}
               <div className="lg:col-span-2">
-                <Card className="p-8">
-                  <h2 className="text-2xl font-bold text-navy-900 mb-6">
+                <Card className="p-8 !bg-charcoal-green">
+                  <h2 className="text-2xl font-bold text-cream-light mb-6">
                     Send Us a Message
                   </h2>
 
@@ -117,12 +117,12 @@ export default function ContactPage() {
                     />
 
                     <div>
-                      <label className="block text-sm font-medium text-charcoal-900 mb-2">
+                      <label className="block text-sm font-medium text-cream-light mb-2">
                         Property Interest
                       </label>
                       <select
                         {...register('propertyInterest')}
-                        className="w-full px-4 py-3 border border-sand-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
+                        className="w-full px-4 py-3 bg-slate-gray border border-sage-tan/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-tan text-cream-light"
                       >
                         <option value="">Select an option</option>
                         <option value="buy">Looking to Buy</option>
@@ -159,17 +159,17 @@ export default function ContactPage() {
               {/* Contact Info */}
               <div className="space-y-6">
                 {/* Phone */}
-                <Card className="p-6">
+                <Card className="p-6 !bg-charcoal-green">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <FaPhone className="text-gold-600 text-xl" />
+                    <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <FaPhone className="text-sage-tan text-xl" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-navy-900 mb-2">Call Us</h3>
-                      <p className="text-charcoal-800 mb-1">
+                      <h3 className="font-bold text-cream-light mb-2">Call Us</h3>
+                      <p className="text-sage-tan mb-1">
                         <strong>UK:</strong> {contactInfo.phone.uk}
                       </p>
-                      <p className="text-charcoal-800">
+                      <p className="text-sage-tan">
                         <strong>Egypt:</strong> {contactInfo.phone.egypt}
                       </p>
                     </div>
@@ -177,16 +177,16 @@ export default function ContactPage() {
                 </Card>
 
                 {/* Email */}
-                <Card className="p-6">
+                <Card className="p-6 !bg-charcoal-green">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <FaEnvelope className="text-gold-600 text-xl" />
+                    <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <FaEnvelope className="text-sage-tan text-xl" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-navy-900 mb-2">Email Us</h3>
+                      <h3 className="font-bold text-cream-light mb-2">Email Us</h3>
                       <a
                         href={`mailto:${contactInfo.email}`}
-                        className="text-charcoal-800 hover:text-gold-600 transition-colors"
+                        className="text-sage-tan hover:text-sage-tan-dark transition-colors"
                       >
                         {contactInfo.email}
                       </a>
@@ -195,18 +195,18 @@ export default function ContactPage() {
                 </Card>
 
                 {/* WhatsApp */}
-                <Card className="p-6 bg-green-50 border-green-200">
+                <Card className="p-6 !bg-slate-gray border-sage-tan/20">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <FaWhatsapp className="text-green-600 text-xl" />
+                    <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <FaWhatsapp className="text-sage-tan text-xl" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-navy-900 mb-2">WhatsApp</h3>
+                      <h3 className="font-bold text-cream-light mb-2">WhatsApp</h3>
                       <a
                         href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-green-700 hover:text-green-800 font-medium"
+                        className="text-sage-tan hover:text-sage-tan-dark font-medium"
                       >
                         Chat with us now →
                       </a>
@@ -215,20 +215,20 @@ export default function ContactPage() {
                 </Card>
 
                 {/* Offices */}
-                <Card className="p-6">
+                <Card className="p-6 !bg-charcoal-green">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <FaMapMarkerAlt className="text-gold-600 text-xl" />
+                    <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <FaMapMarkerAlt className="text-sage-tan text-xl" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-navy-900 mb-2">Our Offices</h3>
-                      <div className="space-y-3 text-sm text-charcoal-800">
+                      <h3 className="font-bold text-cream-light mb-2">Our Offices</h3>
+                      <div className="space-y-3 text-sm text-sage-tan">
                         <div>
-                          <p className="font-medium text-navy-900 mb-1">UK Office</p>
+                          <p className="font-medium text-cream-light mb-1">UK Office</p>
                           <p>{contactInfo.address.uk}</p>
                         </div>
                         <div>
-                          <p className="font-medium text-navy-900 mb-1">Egypt Office</p>
+                          <p className="font-medium text-cream-light mb-1">Egypt Office</p>
                           <p>{contactInfo.address.egypt}</p>
                         </div>
                       </div>
@@ -241,30 +241,30 @@ export default function ContactPage() {
         </section>
 
         {/* Map Placeholder */}
-        <section className="py-0 bg-white">
-          <div className="h-96 bg-sand-200 flex items-center justify-center">
+        <section className="py-0 bg-dark-olive">
+          <div className="h-96 bg-charcoal-green flex items-center justify-center">
             <div className="text-center">
-              <FaMapMarkerAlt className="text-6xl text-gold-600 mx-auto mb-4" />
-              <p className="text-charcoal-800 text-lg">Interactive maps would be displayed here</p>
-              <p className="text-sm text-charcoal-800">Showing our UK and Egypt office locations</p>
+              <FaMapMarkerAlt className="text-6xl text-sage-tan mx-auto mb-4" />
+              <p className="text-cream-light text-lg">Interactive maps would be displayed here</p>
+              <p className="text-sm text-sage-tan">Showing our UK and Egypt office locations</p>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="section-padding bg-sand-50">
+        <section className="section-padding bg-slate-gray">
           <Container>
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-12 text-center">
               Frequently Asked Questions
             </h2>
 
             <div className="max-w-4xl mx-auto space-y-4">
               {faqs.map((faq, index) => (
-                <Card key={index} className="p-6">
-                  <h3 className="text-lg font-bold text-navy-900 mb-3">
+                <Card key={index} className="p-6 !bg-charcoal-green">
+                  <h3 className="text-lg font-bold text-cream-light mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-charcoal-800 leading-relaxed">
+                  <p className="text-sage-tan leading-relaxed">
                     {faq.answer}
                   </p>
                 </Card>
@@ -272,7 +272,7 @@ export default function ContactPage() {
             </div>
 
             <div className="text-center mt-12">
-              <p className="text-charcoal-800 mb-4">
+              <p className="text-sage-tan mb-4">
                 Don't see your question? We're here to help!
               </p>
               <a href={`mailto:${contactInfo.email}`}>

@@ -17,13 +17,13 @@ export default function ServicesPage() {
   return (
     <main className="pt-32 pb-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white py-20">
+      <section className="bg-gradient-to-br from-dark-olive via-charcoal-green to-slate-gray text-cream-light py-20">
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-gold-400">Services</span>
+              Our <span className="text-sage-tan">Services</span>
             </h1>
-            <p className="text-sand-100 text-lg md:text-xl leading-relaxed">
+            <p className="text-sage-tan text-lg md:text-xl leading-relaxed">
               From property acquisition to complete management solutions, we provide comprehensive
               services to make your Egyptian property journey seamless and rewarding.
             </p>
@@ -32,7 +32,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Details */}
-      <section className="section-padding bg-sand-50">
+      <section className="section-padding bg-slate-gray">
         <Container>
           <div className="space-y-20">
             {services.map((service, index) => {
@@ -45,18 +45,18 @@ export default function ServicesPage() {
                   id={service.id}
                   className={`scroll-mt-32 ${isEven ? '' : ''}`}
                 >
-                  <Card className="overflow-hidden">
+                  <Card className="overflow-hidden !bg-charcoal-green">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                       {/* Icon/Image Side */}
-                      <div className={`bg-gradient-to-br from-navy-900 to-navy-800 p-12 flex items-center justify-center ${isEven ? '' : 'lg:order-2'}`}>
+                      <div className={`bg-gradient-to-br from-slate-gray to-dark-olive p-12 flex items-center justify-center ${isEven ? '' : 'lg:order-2'}`}>
                         <div className="text-center">
-                          <div className="w-32 h-32 bg-gold-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <Icon className="text-6xl text-gold-400" />
+                          <div className="w-32 h-32 bg-sage-tan/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <Icon className="text-6xl text-sage-tan" />
                           </div>
-                          <h3 className="text-3xl font-bold text-white mb-4">
+                          <h3 className="text-3xl font-bold text-cream-light mb-4">
                             {service.title}
                           </h3>
-                          <p className="text-sand-200 text-lg">
+                          <p className="text-sage-tan text-lg">
                             {service.description}
                           </p>
                         </div>
@@ -66,12 +66,12 @@ export default function ServicesPage() {
                       <div className="p-8 lg:p-12">
                         {/* Benefits */}
                         <div className="mb-8">
-                          <h4 className="text-xl font-bold text-navy-900 mb-4">Benefits</h4>
+                          <h4 className="text-xl font-bold text-cream-light mb-4">Benefits</h4>
                           <div className="space-y-3">
                             {service.benefits.map((benefit, i) => (
                               <div key={i} className="flex items-start gap-3">
-                                <FaCheckCircle className="text-gold-600 mt-1 flex-shrink-0" />
-                                <span className="text-charcoal-800">{benefit}</span>
+                                <FaCheckCircle className="text-sage-tan mt-1 flex-shrink-0" />
+                                <span className="text-sage-tan">{benefit}</span>
                               </div>
                             ))}
                           </div>
@@ -79,14 +79,14 @@ export default function ServicesPage() {
 
                         {/* Process */}
                         <div>
-                          <h4 className="text-xl font-bold text-navy-900 mb-4">Our Process</h4>
+                          <h4 className="text-xl font-bold text-cream-light mb-4">Our Process</h4>
                           <ol className="space-y-3">
                             {service.process.map((step, i) => (
                               <li key={i} className="flex items-start gap-3">
-                                <span className="flex-shrink-0 w-6 h-6 bg-gold-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                                <span className="flex-shrink-0 w-6 h-6 bg-sage-tan text-dark-olive rounded-full flex items-center justify-center text-sm font-bold">
                                   {i + 1}
                                 </span>
-                                <span className="text-charcoal-800">{step}</span>
+                                <span className="text-sage-tan">{step}</span>
                               </li>
                             ))}
                           </ol>
@@ -108,13 +108,13 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-dark-olive">
         <Container>
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-6">
               Ready to Get Started?
             </h2>
-            <p className="text-charcoal-800 text-lg mb-8">
+            <p className="text-sage-tan text-lg mb-8">
               Contact us today to discuss how we can help you with your Egyptian property needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

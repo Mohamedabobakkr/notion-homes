@@ -90,7 +90,7 @@ export default function PropertiesPage() {
   };
 
   return (
-    <main className="pt-32 pb-20 bg-sand-50">
+    <main className="pt-32 pb-20 bg-dark-olive">
       <Container>
         {/* Page Header */}
         <motion.div
@@ -98,17 +98,17 @@ export default function PropertiesPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-12 text-center"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 mb-6">
-            Browse <span className="text-gold-600">Our Properties</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
+            Browse <span className="text-sage-tan">Our Properties</span>
           </h1>
-          <p className="text-charcoal-800 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-sage-tan text-lg md:text-xl max-w-3xl mx-auto">
             Explore our extensive collection of luxury properties across Egypt's most desirable locations.
           </p>
         </motion.div>
 
         {/* Filters and Controls */}
         <div className="mb-8">
-          <div className="bg-white rounded-xl shadow-md p-6">
+          <div className="bg-charcoal-green rounded-xl shadow-md p-6">
             {/* Mobile Filter Toggle */}
             <div className="flex items-center justify-between mb-6 lg:hidden">
               <Button
@@ -124,7 +124,7 @@ export default function PropertiesPage() {
                   const [field, order] = e.target.value.split('-');
                   setSortBy({ field: field as any, order: order as any });
                 }}
-                className="px-4 py-2 border border-sand-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
+                className="px-4 py-2 bg-slate-gray border border-sage-tan/30 text-cream-light rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-tan"
               >
                 <option value="featured-desc">Featured First</option>
                 <option value="price-asc">Price: Low to High</option>
@@ -136,7 +136,7 @@ export default function PropertiesPage() {
             <div className={`grid grid-cols-1 lg:grid-cols-5 gap-6 ${showFilters || 'hidden lg:grid'}`}>
               {/* Status Filter */}
               <div>
-                <h3 className="font-bold text-navy-900 mb-3">Status</h3>
+                <h3 className="font-bold text-cream-light mb-3">Status</h3>
                 <div className="space-y-2">
                   {(['for-sale', 'for-rent'] as PropertyStatus[]).map(status => (
                     <label key={status} className="flex items-center gap-2 cursor-pointer">
@@ -144,9 +144,9 @@ export default function PropertiesPage() {
                         type="checkbox"
                         checked={filters.status?.includes(status)}
                         onChange={() => toggleFilter('status', status)}
-                        className="rounded text-gold-600 focus:ring-gold-500"
+                        className="rounded text-sage-tan focus:ring-sage-tan"
                       />
-                      <span className="text-sm capitalize">{status.replace('-', ' ')}</span>
+                      <span className="text-sm text-sage-tan capitalize">{status.replace('-', ' ')}</span>
                     </label>
                   ))}
                 </div>
@@ -154,7 +154,7 @@ export default function PropertiesPage() {
 
               {/* Type Filter */}
               <div>
-                <h3 className="font-bold text-navy-900 mb-3">Property Type</h3>
+                <h3 className="font-bold text-cream-light mb-3">Property Type</h3>
                 <div className="space-y-2">
                   {(['villa', 'apartment', 'penthouse'] as PropertyType[]).map(type => (
                     <label key={type} className="flex items-center gap-2 cursor-pointer">
@@ -162,9 +162,9 @@ export default function PropertiesPage() {
                         type="checkbox"
                         checked={filters.type?.includes(type)}
                         onChange={() => toggleFilter('type', type)}
-                        className="rounded text-gold-600 focus:ring-gold-500"
+                        className="rounded text-sage-tan focus:ring-sage-tan"
                       />
-                      <span className="text-sm capitalize">{type}</span>
+                      <span className="text-sm text-sage-tan capitalize">{type}</span>
                     </label>
                   ))}
                 </div>
@@ -172,7 +172,7 @@ export default function PropertiesPage() {
 
               {/* Location Filter */}
               <div>
-                <h3 className="font-bold text-navy-900 mb-3">Location</h3>
+                <h3 className="font-bold text-cream-light mb-3">Location</h3>
                 <div className="space-y-2">
                   {(['hurghada', 'al-gouna', 'north-coast', 'cairo'] as PropertyLocation[]).map(loc => (
                     <label key={loc} className="flex items-center gap-2 cursor-pointer">
@@ -180,9 +180,9 @@ export default function PropertiesPage() {
                         type="checkbox"
                         checked={filters.location?.includes(loc)}
                         onChange={() => toggleFilter('location', loc)}
-                        className="rounded text-gold-600 focus:ring-gold-500"
+                        className="rounded text-sage-tan focus:ring-sage-tan"
                       />
-                      <span className="text-sm capitalize">{loc.replace('-', ' ')}</span>
+                      <span className="text-sm text-sage-tan capitalize">{loc.replace('-', ' ')}</span>
                     </label>
                   ))}
                 </div>
@@ -190,7 +190,7 @@ export default function PropertiesPage() {
 
               {/* Bedrooms Filter */}
               <div>
-                <h3 className="font-bold text-navy-900 mb-3">Bedrooms</h3>
+                <h3 className="font-bold text-cream-light mb-3">Bedrooms</h3>
                 <div className="space-y-2">
                   {[1, 2, 3, 4, 5].map(beds => (
                     <label key={beds} className="flex items-center gap-2 cursor-pointer">
@@ -198,9 +198,9 @@ export default function PropertiesPage() {
                         type="checkbox"
                         checked={filters.bedrooms?.includes(beds)}
                         onChange={() => toggleFilter('bedrooms', beds)}
-                        className="rounded text-gold-600 focus:ring-gold-500"
+                        className="rounded text-sage-tan focus:ring-sage-tan"
                       />
-                      <span className="text-sm">{beds}+ Beds</span>
+                      <span className="text-sm text-sage-tan">{beds}+ Beds</span>
                     </label>
                   ))}
                 </div>
@@ -208,14 +208,14 @@ export default function PropertiesPage() {
 
               {/* Sort (Desktop) */}
               <div className="hidden lg:block">
-                <h3 className="font-bold text-navy-900 mb-3">Sort By</h3>
+                <h3 className="font-bold text-cream-light mb-3">Sort By</h3>
                 <select
                   value={`${sortBy.field}-${sortBy.order}`}
                   onChange={(e) => {
                     const [field, order] = e.target.value.split('-');
                     setSortBy({ field: field as any, order: order as any });
                   }}
-                  className="w-full px-4 py-2 border border-sand-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold-500"
+                  className="w-full px-4 py-2 bg-slate-gray border border-sage-tan/30 text-cream-light rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-tan"
                 >
                   <option value="featured-desc">Featured First</option>
                   <option value="price-asc">Price: Low to High</option>
@@ -229,7 +229,7 @@ export default function PropertiesPage() {
               <div className="mt-6 text-center">
                 <button
                   onClick={() => setFilters({})}
-                  className="text-gold-600 hover:text-gold-700 font-medium"
+                  className="text-sage-tan hover:text-sage-tan-dark font-medium"
                 >
                   Clear all filters
                 </button>
@@ -239,7 +239,7 @@ export default function PropertiesPage() {
         </div>
 
         {/* Results Count */}
-        <div className="mb-6 text-charcoal-800">
+        <div className="mb-6 text-sage-tan">
           Showing {filteredAndSortedProperties.length} {filteredAndSortedProperties.length === 1 ? 'property' : 'properties'}
         </div>
 
@@ -263,7 +263,7 @@ export default function PropertiesPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-xl text-charcoal-800 mb-4">No properties found matching your criteria.</p>
+            <p className="text-xl text-cream-light mb-4">No properties found matching your criteria.</p>
             <Button onClick={() => setFilters({})}>Clear Filters</Button>
           </div>
         )}

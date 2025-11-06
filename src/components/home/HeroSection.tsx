@@ -43,12 +43,12 @@ export const HeroSection: React.FC = () => {
 
         {/* Floating Shapes */}
         <motion.div
-          className="absolute top-20 right-20 w-32 h-32 border-4 border-white/20 rounded-3xl rotate-12"
+          className="absolute top-20 right-20 w-32 h-32 border-4 border-sage-tan/20 rounded-3xl rotate-12"
           animate={{ y: [-20, 20, -20], rotate: [12, 22, 12] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-40 left-20 w-24 h-24 border-4 border-white/20 rounded-full"
+          className="absolute bottom-40 left-20 w-24 h-24 border-4 border-sage-tan/20 rounded-full"
           animate={{ y: [20, -20, 20], x: [-10, 10, -10] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -71,7 +71,7 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full mb-8 text-cream-light"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-slate-gray/30 backdrop-blur-md border border-sage-tan/30 rounded-full mb-8 text-cream-light"
             >
               <span className="w-2 h-2 bg-sage-tan rounded-full animate-pulse" />
               <span className="text-sm font-semibold tracking-wider">Trusted UK-Egypt Property Bridge</span>
@@ -91,7 +91,7 @@ export const HeroSection: React.FC = () => {
                   Egyptian Dream
                 </span>
                 <motion.div
-                  className="absolute -inset-2 bg-white/20 blur-2xl rounded-full"
+                  className="absolute -inset-2 bg-sage-tan/20 blur-2xl rounded-full"
                   animate={{
                     scale: [1, 1.1, 1],
                     opacity: [0.3, 0.5, 0.3],
@@ -125,7 +125,7 @@ export const HeroSection: React.FC = () => {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="xl" variant="glass" className="!text-white !border-white/30 hover:!bg-white/20">
+                <Button size="xl" variant="glass" className="!text-cream-light !border-sage-tan/30 hover:!bg-sage-tan/20">
                   Book Consultation
                 </Button>
               </Link>
@@ -136,7 +136,7 @@ export const HeroSection: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="mt-20 pt-12 border-t border-white/20"
+              className="mt-20 pt-12 border-t border-sage-tan/20"
             >
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
                 {[

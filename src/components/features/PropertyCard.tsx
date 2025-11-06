@@ -53,10 +53,10 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
       className="group"
     >
       <Link href={`/properties/${property.id}`}>
-        <div className="bg-surface rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+        <div className="bg-charcoal-green rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
           <div className="relative h-72 overflow-hidden">
             {/* Property Image */}
-            <div className="w-full h-full bg-gradient-to-br from-sage-tan to-cream-dark transform group-hover:scale-110 transition-transform duration-700">
+            <div className="w-full h-full bg-gradient-to-br from-slate-gray to-dark-olive transform group-hover:scale-110 transition-transform duration-700">
               <div className="w-full h-full flex items-center justify-center text-6xl">
                 🏠
               </div>
@@ -66,13 +66,13 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
             <div className="absolute inset-0 bg-gradient-to-t from-dark-olive/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             {/* Status Badge */}
-            <div className={`absolute top-6 left-6 px-5 py-2 ${getStatusColor()} text-white text-sm font-bold rounded-full shadow-lg backdrop-blur-sm`}>
+            <div className={`absolute top-6 left-6 px-5 py-2 ${getStatusColor()} text-cream-light text-sm font-bold rounded-full shadow-lg backdrop-blur-sm`}>
               {getStatusBadge()}
             </div>
 
             {/* Featured Badge */}
             {property.featured && (
-              <div className="absolute top-6 right-6 px-5 py-2 bg-gradient-to-r from-slate-gray-light to-slate-gray text-white text-sm font-bold rounded-full shadow-lg backdrop-blur-sm">
+              <div className="absolute top-6 right-6 px-5 py-2 bg-gradient-to-r from-slate-gray-light to-slate-gray text-cream-light text-sm font-bold rounded-full shadow-lg backdrop-blur-sm">
                 ⭐ Featured
               </div>
             )}
@@ -86,12 +86,12 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
                 }}
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="absolute bottom-6 right-6 w-14 h-14 glass-dark rounded-full flex items-center justify-center shadow-xl hover:bg-white/20 transition-colors"
+                className="absolute bottom-6 right-6 w-14 h-14 glass-dark rounded-full flex items-center justify-center shadow-xl hover:bg-slate-gray/50 transition-colors"
               >
                 {isFavorite ? (
                   <FaHeart className="text-red-400 text-xl" />
                 ) : (
-                  <FaRegHeart className="text-white text-xl" />
+                  <FaRegHeart className="text-cream-light text-xl" />
                 )}
               </motion.button>
             )}
@@ -100,49 +100,49 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
           {/* Property Details */}
           <div className="p-7">
             {/* Location */}
-            <div className="flex items-center gap-2 text-slate-gray text-sm font-semibold mb-3">
+            <div className="flex items-center gap-2 text-sage-tan text-sm font-semibold mb-3">
               <FaMapMarkerAlt className="text-base" />
               <span className="capitalize">{property.location.replace('-', ' ')}</span>
             </div>
 
             {/* Title */}
-            <h3 className="text-2xl font-bold text-dark-olive mb-4 group-hover:text-slate-gray transition-colors line-clamp-2 leading-tight">
+            <h3 className="text-2xl font-bold text-cream-light mb-4 group-hover:text-sage-tan transition-colors line-clamp-2 leading-tight">
               {property.title}
             </h3>
 
             {/* Features */}
             <div className="flex items-center gap-6 mb-6 text-sage-tan">
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-cream-light flex items-center justify-center">
-                  <FaBed className="text-slate-gray text-lg" />
+                <div className="w-10 h-10 rounded-xl bg-slate-gray flex items-center justify-center">
+                  <FaBed className="text-sage-tan text-lg" />
                 </div>
-                <span className="text-dark-olive font-semibold">{property.bedrooms}</span>
+                <span className="text-cream-light font-semibold">{property.bedrooms}</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-cream-light flex items-center justify-center">
-                  <FaBath className="text-slate-gray text-lg" />
+                <div className="w-10 h-10 rounded-xl bg-slate-gray flex items-center justify-center">
+                  <FaBath className="text-sage-tan text-lg" />
                 </div>
-                <span className="text-dark-olive font-semibold">{property.bathrooms}</span>
+                <span className="text-cream-light font-semibold">{property.bathrooms}</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-xl bg-cream-light flex items-center justify-center">
-                  <FaRuler className="text-slate-gray text-lg" />
+                <div className="w-10 h-10 rounded-xl bg-slate-gray flex items-center justify-center">
+                  <FaRuler className="text-sage-tan text-lg" />
                 </div>
-                <span className="text-dark-olive font-semibold">{property.size}m²</span>
+                <span className="text-cream-light font-semibold">{property.size}m²</span>
               </div>
             </div>
 
             {/* Price & CTA */}
-            <div className="flex items-center justify-between pt-6 border-t-2 border-cream-light">
+            <div className="flex items-center justify-between pt-6 border-t-2 border-slate-gray">
               <div>
                 <p className="text-xs text-sage-tan font-medium mb-1">Starting from</p>
-                <p className="text-3xl font-extrabold text-dark-olive">
+                <p className="text-3xl font-extrabold text-cream-light">
                   {formatPrice(property.priceGBP)}
                   {property.status === 'for-rent' && <span className="text-sm font-normal text-sage-tan">/mo</span>}
                 </p>
               </div>
               <motion.div
-                className="flex items-center gap-2 text-slate-gray font-bold group-hover:gap-4 transition-all"
+                className="flex items-center gap-2 text-sage-tan font-bold group-hover:gap-4 transition-all"
               >
                 <span>View</span>
                 <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>

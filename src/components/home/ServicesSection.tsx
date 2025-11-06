@@ -36,7 +36,7 @@ const services = [
 
 export const ServicesSection: React.FC = () => {
   return (
-    <section className="section-padding-lg bg-surface">
+    <section className="section-padding-lg bg-slate-gray">
       <Container>
         {/* Section Header */}
         <motion.div
@@ -46,13 +46,13 @@ export const ServicesSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-slate-gray text-lg mb-4 tracking-wider uppercase font-medium">
+          <p className="text-sage-tan text-lg mb-4 tracking-wider uppercase font-medium">
             What We Offer
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-olive mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
             Our Services
           </h2>
-          <p className="text-slate-gray/80 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-sage-tan text-lg md:text-xl max-w-3xl mx-auto">
             From property sales to complete management solutions, we provide end-to-end
             services for your Egyptian property journey.
           </p>
@@ -71,17 +71,17 @@ export const ServicesSection: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 <Link href={service.link}>
-                  <Card className="h-full text-center p-8 hover:border-gold-500 border-2 border-transparent transition-all">
-                    <div className="w-16 h-16 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Icon className="text-3xl text-gold-600" />
+                  <Card className="h-full text-center p-8 !bg-charcoal-green hover:!border-sage-tan border-2 border-slate-gray transition-all">
+                    <div className="w-16 h-16 bg-sage-tan/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <Icon className="text-3xl text-sage-tan" />
                     </div>
-                    <h3 className="text-xl font-bold text-dark-olive mb-4 font-heading">
+                    <h3 className="text-xl font-bold text-cream-light mb-4 font-heading">
                       {service.title}
                     </h3>
-                    <p className="text-slate-gray/70 leading-relaxed">
+                    <p className="text-sage-tan leading-relaxed">
                       {service.description}
                     </p>
-                    <div className="mt-6 text-slate-gray font-medium">
+                    <div className="mt-6 text-sage-tan font-medium">
                       Learn More →
                     </div>
                   </Card>

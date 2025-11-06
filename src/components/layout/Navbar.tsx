@@ -39,7 +39,7 @@ export const Navbar: React.FC = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'glass shadow-xl py-4'
-          : 'bg-white/95 backdrop-blur-sm py-6 shadow-md'
+          : 'bg-dark-olive/95 backdrop-blur-sm py-6 shadow-md'
       }`}
     >
       <Container>
@@ -50,10 +50,10 @@ export const Navbar: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               className="flex flex-col"
             >
-              <span className="text-2xl md:text-3xl font-extrabold text-dark-olive font-heading">
+              <span className="text-2xl md:text-3xl font-extrabold text-cream-light font-heading">
                 Notion Homes
               </span>
-              <span className="text-xs text-slate-gray tracking-widest uppercase font-semibold">
+              <span className="text-xs text-sage-tan tracking-widest uppercase font-semibold">
                 Luxury Egyptian Properties
               </span>
             </motion.div>
@@ -67,13 +67,13 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 className={`text-base font-semibold transition-colors relative group ${
                   pathname === link.href
-                    ? 'text-charcoal-green'
-                    : 'text-dark-olive hover:text-slate-gray'
+                    ? 'text-sage-tan'
+                    : 'text-cream-light hover:text-sage-tan'
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-slate-gray transition-all ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-sage-tan transition-all ${
                     pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="tel:+442012345678"
-              className="text-slate-gray hover:text-slate-gray-light transition-colors"
+              className="text-sage-tan hover:text-cream-light transition-colors"
             >
               <FaPhone className="text-xl" />
             </a>
@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-dark-olive text-2xl focus:outline-none hover:text-slate-gray transition-colors"
+            className="lg:hidden text-cream-light text-2xl focus:outline-none hover:text-sage-tan transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <FaTimes /> : <FaBars />}
@@ -123,8 +123,8 @@ export const Navbar: React.FC = () => {
                     href={link.href}
                     className={`block text-lg font-semibold transition-colors ${
                       pathname === link.href
-                        ? 'text-charcoal-green'
-                        : 'text-dark-olive hover:text-slate-gray'
+                        ? 'text-sage-tan'
+                        : 'text-cream-light hover:text-sage-tan'
                     }`}
                   >
                     {link.label}
@@ -133,7 +133,7 @@ export const Navbar: React.FC = () => {
                 <div className="pt-4 space-y-3">
                   <a
                     href="tel:+442012345678"
-                    className="flex items-center gap-2 text-dark-olive hover:text-slate-gray transition-colors font-semibold"
+                    className="flex items-center gap-2 text-cream-light hover:text-sage-tan transition-colors font-semibold"
                   >
                     <FaPhone /> Call Us
                   </a>

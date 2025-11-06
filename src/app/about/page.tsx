@@ -9,13 +9,13 @@ export default function AboutPage() {
   return (
     <main className="pt-32 pb-20">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white py-20">
+      <section className="bg-gradient-to-br from-dark-olive via-charcoal-green to-slate-gray text-cream-light py-20">
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              About <span className="text-gold-400">Notion Homes</span>
+              About <span className="text-sage-tan">Notion Homes</span>
             </h1>
-            <p className="text-sand-100 text-lg md:text-xl leading-relaxed">
+            <p className="text-sage-tan text-lg md:text-xl leading-relaxed">
               Your trusted bridge between UK and Egyptian real estate, specializing in luxury
               properties across Egypt's most prestigious destinations.
             </p>
@@ -24,13 +24,13 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-charcoal-green">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-6 text-center">
               Our Story
             </h2>
-            <div className="space-y-6 text-charcoal-800 text-lg leading-relaxed">
+            <div className="space-y-6 text-sage-tan text-lg leading-relaxed">
               <p>
                 Founded with a vision to connect UK clients with exceptional Egyptian properties,
                 Notion Homes has become the premier choice for discerning buyers and investors
@@ -53,9 +53,9 @@ export default function AboutPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="section-padding bg-sand-50">
+      <section className="section-padding bg-slate-gray">
         <Container>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-12 text-center">
             Why Choose Notion Homes
           </h2>
 
@@ -84,14 +84,14 @@ export default function AboutPage() {
             ].map((item, index) => {
               const Icon = item.icon;
               return (
-                <Card key={index} className="text-center p-8">
-                  <div className="w-16 h-16 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Icon className="text-3xl text-gold-600" />
+                <Card key={index} className="text-center p-8 !bg-charcoal-green">
+                  <div className="w-16 h-16 bg-sage-tan/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Icon className="text-3xl text-sage-tan" />
                   </div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-4">
+                  <h3 className="text-xl font-bold text-cream-light mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-charcoal-800 leading-relaxed">
+                  <p className="text-sage-tan leading-relaxed">
                     {item.description}
                   </p>
                 </Card>
@@ -102,10 +102,10 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-dark-olive">
         <Container>
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-12 text-center">
               Our Values
             </h2>
 
@@ -129,10 +129,10 @@ export default function AboutPage() {
                 },
               ].map((value, index) => (
                 <div key={index} className="flex gap-4">
-                  <FaCheckCircle className="text-gold-600 text-2xl flex-shrink-0 mt-1" />
+                  <FaCheckCircle className="text-sage-tan text-2xl flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="text-xl font-bold text-navy-900 mb-2">{value.title}</h3>
-                    <p className="text-charcoal-800 leading-relaxed">{value.description}</p>
+                    <h3 className="text-xl font-bold text-cream-light mb-2">{value.title}</h3>
+                    <p className="text-sage-tan leading-relaxed">{value.description}</p>
                   </div>
                 </div>
               ))}
@@ -142,7 +142,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="section-padding bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white">
+      <section className="section-padding bg-gradient-to-br from-charcoal-green via-slate-gray to-dark-olive text-cream-light">
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -152,10 +152,10 @@ export default function AboutPage() {
               { value: '4', label: 'Prime Locations' },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-gold-400 mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-sage-tan mb-2">
                   {stat.value}
                 </div>
-                <div className="text-sand-200">{stat.label}</div>
+                <div className="text-cream-light">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -163,9 +163,9 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="section-padding bg-sand-50">
+      <section className="section-padding bg-slate-gray">
         <Container>
-          <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-12 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-12 text-center">
             Our Leadership Team
           </h2>
 
@@ -187,19 +187,19 @@ export default function AboutPage() {
                 credentials: ['UK client services', 'Investment advisor'],
               },
             ].map((member, index) => (
-              <Card key={index} className="text-center p-8">
-                <div className="w-24 h-24 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-4xl font-bold text-gold-600">
+              <Card key={index} className="text-center p-8 !bg-charcoal-green">
+                <div className="w-24 h-24 bg-sage-tan/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-4xl font-bold text-sage-tan">
                     {member.name.split(' ').map(n => n[0]).join('')}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-navy-900 mb-2">
+                <h3 className="text-xl font-bold text-cream-light mb-2">
                   {member.name}
                 </h3>
-                <p className="text-gold-600 font-medium mb-4">{member.role}</p>
+                <p className="text-sage-tan font-medium mb-4">{member.role}</p>
                 <div className="space-y-2">
                   {member.credentials.map((cred, i) => (
-                    <p key={i} className="text-sm text-charcoal-800">{cred}</p>
+                    <p key={i} className="text-sm text-sage-tan">{cred}</p>
                   ))}
                 </div>
               </Card>
@@ -209,13 +209,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-dark-olive">
         <Container>
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-6">
               Ready to Start Your Egyptian Property Journey?
             </h2>
-            <p className="text-charcoal-800 text-lg mb-8">
+            <p className="text-sage-tan text-lg mb-8">
               Let's discuss how we can help you find your perfect property in Egypt.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
