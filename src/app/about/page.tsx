@@ -13,9 +13,9 @@ export default function AboutPage() {
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              About <span className="text-sage-tan">Notion Homes</span>
+              About <span className="text-cream-light">Notion Homes</span>
             </h1>
-            <p className="text-sage-tan text-lg md:text-xl leading-relaxed">
+            <p className="text-cream-light text-lg md:text-xl leading-relaxed">
               Your trusted bridge between UK and Egyptian real estate, specializing in luxury
               properties across Egypt's most prestigious destinations.
             </p>
@@ -30,7 +30,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-6 text-center">
               Our Story
             </h2>
-            <div className="space-y-6 text-sage-tan text-lg leading-relaxed">
+            <div className="space-y-6 text-cream-light text-lg leading-relaxed">
               <p>
                 Founded with a vision to connect UK clients with exceptional Egyptian properties,
                 Notion Homes has become the premier choice for discerning buyers and investors
@@ -91,7 +91,7 @@ export default function AboutPage() {
                   <h3 className="text-xl font-bold text-cream-light mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-sage-tan leading-relaxed">
+                  <p className="text-cream-light leading-relaxed">
                     {item.description}
                   </p>
                 </Card>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                   <FaCheckCircle className="text-sage-tan text-2xl flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xl font-bold text-cream-light mb-2">{value.title}</h3>
-                    <p className="text-sage-tan leading-relaxed">{value.description}</p>
+                    <p className="text-cream-light leading-relaxed">{value.description}</p>
                   </div>
                 </div>
               ))}
@@ -152,7 +152,7 @@ export default function AboutPage() {
               { value: '4', label: 'Prime Locations' },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-sage-tan mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-cream-light mb-2">
                   {stat.value}
                 </div>
                 <div className="text-cream-light">{stat.label}</div>
@@ -196,10 +196,10 @@ export default function AboutPage() {
                 <h3 className="text-xl font-bold text-cream-light mb-2">
                   {member.name}
                 </h3>
-                <p className="text-sage-tan font-medium mb-4">{member.role}</p>
+                <p className="text-cream-light font-medium mb-4">{member.role}</p>
                 <div className="space-y-2">
                   {member.credentials.map((cred, i) => (
-                    <p key={i} className="text-sm text-sage-tan">{cred}</p>
+                    <p key={i} className="text-sm text-cream-light">{cred}</p>
                   ))}
                 </div>
               </Card>
@@ -215,7 +215,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-6">
               Ready to Start Your Egyptian Property Journey?
             </h2>
-            <p className="text-sage-tan text-lg mb-8">
+            <p className="text-cream-light text-lg mb-8">
               Let's discuss how we can help you find your perfect property in Egypt.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

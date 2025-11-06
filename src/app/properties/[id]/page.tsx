@@ -34,10 +34,10 @@ export default async function PropertyPage({ params }: Props) {
     <main className="pt-28 pb-20 bg-dark-olive">
       <Container>
         {/* Breadcrumb */}
-        <div className="mb-8 text-sm text-sage-tan">
-          <a href="/" className="hover:text-sage-tan-dark">Home</a>
+        <div className="mb-8 text-sm text-cream-light">
+          <a href="/" className="hover:text-cream-light">Home</a>
           {' / '}
-          <a href="/properties" className="hover:text-sage-tan-dark">Properties</a>
+          <a href="/properties" className="hover:text-cream-light">Properties</a>
           {' / '}
           <span className="text-cream-light font-medium">{property.title}</span>
         </div>
@@ -85,7 +85,7 @@ export default async function PropertyPage({ params }: Props) {
                   <h1 className="text-3xl md:text-4xl font-bold text-cream-light mb-3">
                     {property.title}
                   </h1>
-                  <div className="flex items-center gap-2 text-sage-tan">
+                  <div className="flex items-center gap-2 text-cream-light">
                     <FaMapMarkerAlt className="text-sage-tan" />
                     <span className="text-lg">{getLocationLabel(property.location)}</span>
                   </div>
@@ -95,7 +95,7 @@ export default async function PropertyPage({ params }: Props) {
                 </button>
               </div>
 
-              <div className="flex items-center gap-8 text-sage-tan text-lg">
+              <div className="flex items-center gap-8 text-cream-light text-lg">
                 <div className="flex items-center gap-2">
                   <FaBed className="text-sage-tan text-xl" />
                   <span>{property.bedrooms} Bedrooms</span>
@@ -115,12 +115,12 @@ export default async function PropertyPage({ params }: Props) {
             <Card className="mb-8 p-6 !bg-gradient-to-br from-slate-gray to-charcoal-green text-cream-light">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sage-tan mb-2">Price</p>
+                  <p className="text-cream-light mb-2">Price</p>
                   <p className="text-4xl font-bold text-cream-light">
                     {formatPrice(property.priceGBP)}
                     {property.status === 'for-rent' && <span className="text-xl"> /month</span>}
                   </p>
-                  <p className="text-sage-tan mt-2">
+                  <p className="text-cream-light mt-2">
                     ≈ {formatPrice(property.priceGBP, 'EGP')}
                   </p>
                 </div>
@@ -130,7 +130,7 @@ export default async function PropertyPage({ params }: Props) {
             {/* Description */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-cream-light mb-4">Description</h2>
-              <p className="text-sage-tan leading-relaxed text-lg">
+              <p className="text-cream-light leading-relaxed text-lg">
                 {property.description}
               </p>
             </div>
@@ -141,29 +141,29 @@ export default async function PropertyPage({ params }: Props) {
               <Card className="p-6 !bg-charcoal-green">
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <p className="text-sage-tan mb-1">Property Type</p>
+                    <p className="text-cream-light mb-1">Property Type</p>
                     <p className="font-bold text-cream-light capitalize">{getPropertyTypeLabel(property.type)}</p>
                   </div>
                   <div>
-                    <p className="text-sage-tan mb-1">Size</p>
+                    <p className="text-cream-light mb-1">Size</p>
                     <p className="font-bold text-cream-light">{property.size}m²</p>
                   </div>
                   <div>
-                    <p className="text-sage-tan mb-1">Bedrooms</p>
+                    <p className="text-cream-light mb-1">Bedrooms</p>
                     <p className="font-bold text-cream-light">{property.bedrooms}</p>
                   </div>
                   <div>
-                    <p className="text-sage-tan mb-1">Bathrooms</p>
+                    <p className="text-cream-light mb-1">Bathrooms</p>
                     <p className="font-bold text-cream-light">{property.bathrooms}</p>
                   </div>
                   {property.yearBuilt && (
                     <div>
-                      <p className="text-sage-tan mb-1">Year Built</p>
+                      <p className="text-cream-light mb-1">Year Built</p>
                       <p className="font-bold text-cream-light">{property.yearBuilt}</p>
                     </div>
                   )}
                   <div>
-                    <p className="text-sage-tan mb-1">Location</p>
+                    <p className="text-cream-light mb-1">Location</p>
                     <p className="font-bold text-cream-light">{getLocationLabel(property.location)}</p>
                   </div>
                 </div>
@@ -178,7 +178,7 @@ export default async function PropertyPage({ params }: Props) {
                   {property.features.map((feature, index) => (
                     <div key={index} className="flex items-center gap-3">
                       <FaCheckCircle className="text-sage-tan flex-shrink-0" />
-                      <span className="text-sage-tan">{feature}</span>
+                      <span className="text-cream-light">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -193,7 +193,7 @@ export default async function PropertyPage({ params }: Props) {
                   {property.amenities.map((amenity, index) => (
                     <div key={index} className="flex items-center gap-3">
                       <FaCheckCircle className="text-sage-tan flex-shrink-0" />
-                      <span className="text-sage-tan">{amenity}</span>
+                      <span className="text-cream-light">{amenity}</span>
                     </div>
                   ))}
                 </div>
@@ -207,26 +207,26 @@ export default async function PropertyPage({ params }: Props) {
                 <div className="text-center">
                   <FaMapMarkerAlt className="text-6xl text-sage-tan mx-auto mb-4" />
                   <p className="text-cream-light text-lg">Interactive map would be displayed here</p>
-                  <p className="text-sm text-sage-tan">Showing {getLocationLabel(property.location)}</p>
+                  <p className="text-sm text-cream-light">Showing {getLocationLabel(property.location)}</p>
                 </div>
               </div>
               {property.nearbyPlaces && (
                 <div className="mt-4 grid grid-cols-3 gap-4">
                   {property.nearbyPlaces.beach && (
                     <div className="text-center p-4 bg-charcoal-green rounded-lg">
-                      <p className="text-sm text-sage-tan">Beach</p>
+                      <p className="text-sm text-cream-light">Beach</p>
                       <p className="font-bold text-cream-light">{property.nearbyPlaces.beach}km</p>
                     </div>
                   )}
                   {property.nearbyPlaces.airport && (
                     <div className="text-center p-4 bg-charcoal-green rounded-lg">
-                      <p className="text-sm text-sage-tan">Airport</p>
+                      <p className="text-sm text-cream-light">Airport</p>
                       <p className="font-bold text-cream-light">{property.nearbyPlaces.airport}km</p>
                     </div>
                   )}
                   {property.nearbyPlaces.restaurants && (
                     <div className="text-center p-4 bg-charcoal-green rounded-lg">
-                      <p className="text-sm text-sage-tan">Restaurants</p>
+                      <p className="text-sm text-cream-light">Restaurants</p>
                       <p className="font-bold text-cream-light">{property.nearbyPlaces.restaurants}km</p>
                     </div>
                   )}
@@ -263,7 +263,7 @@ export default async function PropertyPage({ params }: Props) {
                   </a>
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-slate-gray text-sm text-sage-tan">
+                <div className="mt-6 pt-6 border-t border-slate-gray text-sm text-cream-light">
                   <p className="mb-2"><strong>UK Office:</strong> {contactInfo.phone.uk}</p>
                   <p><strong>Egypt Office:</strong> {contactInfo.phone.egypt}</p>
                 </div>

@@ -152,7 +152,7 @@ export const HeroSection: React.FC = () => {
                     transition={{ delay: 1 + index * 0.1, duration: 0.6 }}
                     className="text-center"
                   >
-                    <div className="text-4xl md:text-5xl font-extrabold text-sage-tan mb-2 tabular-nums">
+                    <div className="text-4xl md:text-5xl font-extrabold text-cream-light mb-2 tabular-nums">
                       {stat.value}
                     </div>
                     <div className="text-cream-light/80 text-sm md:text-base font-medium">

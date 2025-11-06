@@ -46,13 +46,13 @@ export const ServicesSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-sage-tan text-lg mb-4 tracking-wider uppercase font-medium">
+          <p className="text-cream-light text-lg mb-4 tracking-wider uppercase font-medium">
             What We Offer
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
             Our Services
           </h2>
-          <p className="text-sage-tan text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-cream-light text-lg md:text-xl max-w-3xl mx-auto">
             From property sales to complete management solutions, we provide end-to-end
             services for your Egyptian property journey.
           </p>
@@ -78,10 +78,10 @@ export const ServicesSection: React.FC = () => {
                     <h3 className="text-xl font-bold text-cream-light mb-4 font-heading">
                       {service.title}
                     </h3>
-                    <p className="text-sage-tan leading-relaxed">
+                    <p className="text-cream-light leading-relaxed">
                       {service.description}
                     </p>
-                    <div className="mt-6 text-sage-tan font-medium">
+                    <div className="mt-6 text-cream-light font-medium">
                       Learn More →
                     </div>
                   </Card>

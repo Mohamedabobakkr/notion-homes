@@ -65,32 +65,32 @@ export const Footer: React.FC = () => {
               <h4 className="text-lg font-bold mb-4 text-cream-light font-heading">Quick Links</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/properties" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/properties" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     Browse Properties
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?status=for-sale" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/properties?status=for-sale" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     Properties for Sale
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?status=for-rent" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/properties?status=for-rent" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     Properties for Rent
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/services" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     Our Services
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/about" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/contact" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     Contact Us
                   </Link>
                 </li>
@@ -102,22 +102,22 @@ export const Footer: React.FC = () => {
               <h4 className="text-lg font-bold mb-4 text-cream-light font-heading">Our Locations</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/properties?location=hurghada" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/properties?location=hurghada" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     Hurghada Properties
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?location=al-gouna" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/properties?location=al-gouna" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     El Gouna Properties
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?location=north-coast" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/properties?location=north-coast" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     North Coast Properties
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?location=cairo" className="text-cream-light/80 hover:text-sage-tan transition-colors">
+                  <Link href="/properties?location=cairo" className="text-cream-light/80 hover:text-cream-light transition-colors">
                     Cairo Properties
                   </Link>
                 </li>
@@ -139,7 +139,7 @@ export const Footer: React.FC = () => {
                   <FaEnvelope className="text-sage-tan mt-1 flex-shrink-0" />
                   <a
                     href={`mailto:${contactInfo.email}`}
-                    className="text-cream-light/80 hover:text-sage-tan transition-colors"
+                    className="text-cream-light/80 hover:text-cream-light transition-colors"
                   >
                     {contactInfo.email}
                   </a>
@@ -160,10 +160,10 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-cream-light/70">
             <p>© {currentYear} Notion Homes. All rights reserved.</p>
             <div className="flex gap-6">
-              <Link href="/privacy-policy" className="hover:text-sage-tan transition-colors">
+              <Link href="/privacy-policy" className="hover:text-cream-light transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms-conditions" className="hover:text-sage-tan transition-colors">
+              <Link href="/terms-conditions" className="hover:text-cream-light transition-colors">
                 Terms & Conditions
               </Link>
             </div>

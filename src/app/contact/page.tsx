@@ -63,9 +63,9 @@ export default function ContactPage() {
           <Container>
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Get in <span className="text-sage-tan">Touch</span>
+                Get in <span className="text-cream-light">Touch</span>
               </h1>
-              <p className="text-sage-tan text-lg md:text-xl leading-relaxed">
+              <p className="text-cream-light text-lg md:text-xl leading-relaxed">
                 Have questions about Egyptian properties? Our expert team is here to help.
                 Reach out today and let's start your property journey.
               </p>
@@ -166,10 +166,10 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-cream-light mb-2">Call Us</h3>
-                      <p className="text-sage-tan mb-1">
+                      <p className="text-cream-light mb-1">
                         <strong>UK:</strong> {contactInfo.phone.uk}
                       </p>
-                      <p className="text-sage-tan">
+                      <p className="text-cream-light">
                         <strong>Egypt:</strong> {contactInfo.phone.egypt}
                       </p>
                     </div>
@@ -186,7 +186,7 @@ export default function ContactPage() {
                       <h3 className="font-bold text-cream-light mb-2">Email Us</h3>
                       <a
                         href={`mailto:${contactInfo.email}`}
-                        className="text-sage-tan hover:text-sage-tan-dark transition-colors"
+                        className="text-cream-light hover:text-cream-light transition-colors"
                       >
                         {contactInfo.email}
                       </a>
@@ -206,7 +206,7 @@ export default function ContactPage() {
                         href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sage-tan hover:text-sage-tan-dark font-medium"
+                        className="text-cream-light hover:text-cream-light font-medium"
                       >
                         Chat with us now →
                       </a>
@@ -222,7 +222,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-cream-light mb-2">Our Offices</h3>
-                      <div className="space-y-3 text-sm text-sage-tan">
+                      <div className="space-y-3 text-sm text-cream-light">
                         <div>
                           <p className="font-medium text-cream-light mb-1">UK Office</p>
                           <p>{contactInfo.address.uk}</p>
@@ -246,7 +246,7 @@ export default function ContactPage() {
             <div className="text-center">
               <FaMapMarkerAlt className="text-6xl text-sage-tan mx-auto mb-4" />
               <p className="text-cream-light text-lg">Interactive maps would be displayed here</p>
-              <p className="text-sm text-sage-tan">Showing our UK and Egypt office locations</p>
+              <p className="text-sm text-cream-light">Showing our UK and Egypt office locations</p>
             </div>
           </div>
         </section>
@@ -264,7 +264,7 @@ export default function ContactPage() {
                   <h3 className="text-lg font-bold text-cream-light mb-3">
                     {faq.question}
                   </h3>
-                  <p className="text-sage-tan leading-relaxed">
+                  <p className="text-cream-light leading-relaxed">
                     {faq.answer}
                   </p>
                 </Card>
@@ -272,7 +272,7 @@ export default function ContactPage() {
             </div>
 
             <div className="text-center mt-12">
-              <p className="text-sage-tan mb-4">
+              <p className="text-cream-light mb-4">
                 Don't see your question? We're here to help!
               </p>
               <a href={`mailto:${contactInfo.email}`}>

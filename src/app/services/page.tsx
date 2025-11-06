@@ -21,9 +21,9 @@ export default function ServicesPage() {
         <Container>
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Our <span className="text-sage-tan">Services</span>
+              Our <span className="text-cream-light">Services</span>
             </h1>
-            <p className="text-sage-tan text-lg md:text-xl leading-relaxed">
+            <p className="text-cream-light text-lg md:text-xl leading-relaxed">
               From property acquisition to complete management solutions, we provide comprehensive
               services to make your Egyptian property journey seamless and rewarding.
             </p>
@@ -56,7 +56,7 @@ export default function ServicesPage() {
                           <h3 className="text-3xl font-bold text-cream-light mb-4">
                             {service.title}
                           </h3>
-                          <p className="text-sage-tan text-lg">
+                          <p className="text-cream-light text-lg">
                             {service.description}
                           </p>
                         </div>
@@ -71,7 +71,7 @@ export default function ServicesPage() {
                             {service.benefits.map((benefit, i) => (
                               <div key={i} className="flex items-start gap-3">
                                 <FaCheckCircle className="text-sage-tan mt-1 flex-shrink-0" />
-                                <span className="text-sage-tan">{benefit}</span>
+                                <span className="text-cream-light">{benefit}</span>
                               </div>
                             ))}
                           </div>
@@ -86,7 +86,7 @@ export default function ServicesPage() {
                                 <span className="flex-shrink-0 w-6 h-6 bg-sage-tan text-dark-olive rounded-full flex items-center justify-center text-sm font-bold">
                                   {i + 1}
                                 </span>
-                                <span className="text-sage-tan">{step}</span>
+                                <span className="text-cream-light">{step}</span>
                               </li>
                             ))}
                           </ol>
@@ -114,7 +114,7 @@ export default function ServicesPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-cream-light mb-6">
               Ready to Get Started?
             </h2>
-            <p className="text-sage-tan text-lg mb-8">
+            <p className="text-cream-light text-lg mb-8">
               Contact us today to discuss how we can help you with your Egyptian property needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

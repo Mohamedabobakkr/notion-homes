@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
               <span className="text-2xl md:text-3xl font-extrabold text-cream-light font-heading">
                 Notion Homes
               </span>
-              <span className="text-xs text-sage-tan tracking-widest uppercase font-semibold">
+              <span className="text-xs text-cream-light tracking-widest uppercase font-semibold">
                 Luxury Egyptian Properties
               </span>
             </motion.div>
@@ -67,8 +67,8 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 className={`text-base font-semibold transition-colors relative group ${
                   pathname === link.href
-                    ? 'text-sage-tan'
-                    : 'text-cream-light hover:text-sage-tan'
+                    ? 'text-cream-light'
+                    : 'text-cream-light hover:text-cream-light'
                 }`}
               >
                 {link.label}
@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="tel:+442012345678"
-              className="text-sage-tan hover:text-cream-light transition-colors"
+              className="text-cream-light hover:text-cream-light transition-colors"
             >
               <FaPhone className="text-xl" />
             </a>
@@ -99,7 +99,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-cream-light text-2xl focus:outline-none hover:text-sage-tan transition-colors"
+            className="lg:hidden text-cream-light text-2xl focus:outline-none hover:text-cream-light transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? <FaTimes /> : <FaBars />}
@@ -123,8 +123,8 @@ export const Navbar: React.FC = () => {
                     href={link.href}
                     className={`block text-lg font-semibold transition-colors ${
                       pathname === link.href
-                        ? 'text-sage-tan'
-                        : 'text-cream-light hover:text-sage-tan'
+                        ? 'text-cream-light'
+                        : 'text-cream-light hover:text-cream-light'
                     }`}
                   >
                     {link.label}
@@ -133,7 +133,7 @@ export const Navbar: React.FC = () => {
                 <div className="pt-4 space-y-3">
                   <a
                     href="tel:+442012345678"
-                    className="flex items-center gap-2 text-cream-light hover:text-sage-tan transition-colors font-semibold"
+                    className="flex items-center gap-2 text-cream-light hover:text-cream-light transition-colors font-semibold"
                   >
                     <FaPhone /> Call Us
                   </a>

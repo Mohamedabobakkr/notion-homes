@@ -31,8 +31,8 @@ export const Button: React.FC<ButtonProps> = ({
   const variants = {
     primary: 'bg-gradient-to-r from-slate-gray to-sage-tan text-dark-olive shadow-lg hover:shadow-xl hover:shadow-sage-tan/30 hover:scale-[1.02] active:scale-[0.98]',
     secondary: 'bg-gradient-to-r from-charcoal-green to-slate-gray text-cream-light shadow-lg hover:shadow-xl hover:shadow-charcoal-green/30 hover:scale-[1.02] active:scale-[0.98]',
-    outline: 'border-2 border-sage-tan text-sage-tan hover:bg-sage-tan hover:text-dark-olive hover:border-sage-tan shadow-sm hover:shadow-md',
-    ghost: 'text-cream-light hover:bg-sage-tan/20 hover:text-sage-tan',
+    outline: 'border-2 border-sage-tan text-cream-light hover:bg-sage-tan hover:text-dark-olive hover:border-sage-tan shadow-sm hover:shadow-md',
+    ghost: 'text-cream-light hover:bg-sage-tan/20 hover:text-cream-light',
     glass: 'glass text-cream-light hover:bg-charcoal-green/80 shadow-md hover:shadow-lg',
   };
 

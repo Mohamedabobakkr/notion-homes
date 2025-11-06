@@ -22,13 +22,13 @@ export const TestimonialsSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-sage-tan text-lg mb-4 tracking-wider uppercase font-medium">
+          <p className="text-cream-light text-lg mb-4 tracking-wider uppercase font-medium">
             Client Stories
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
             What Our Clients Say
           </h2>
-          <p className="text-sage-tan text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-cream-light text-lg md:text-xl max-w-3xl mx-auto">
             Don't just take our word for it. Hear from UK clients who've successfully
             found their dream Egyptian properties with us.
           </p>
@@ -53,7 +53,7 @@ export const TestimonialsSection: React.FC = () => {
                 </div>
 
                 {/* Testimonial Text */}
-                <p className="text-sage-tan leading-relaxed mb-6 italic">
+                <p className="text-cream-light leading-relaxed mb-6 italic">
                   "{testimonial.text}"
                 </p>
 
@@ -68,7 +68,7 @@ export const TestimonialsSection: React.FC = () => {
                     <div className="font-bold text-cream-light">
                       {testimonial.name}
                     </div>
-                    <div className="text-sm text-sage-tan">
+                    <div className="text-sm text-cream-light">
                       {testimonial.location}
                     </div>
                   </div>

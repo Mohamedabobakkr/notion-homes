@@ -99,9 +99,9 @@ export default function PropertiesPage() {
           className="mb-12 text-center"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
-            Browse <span className="text-sage-tan">Our Properties</span>
+            Browse <span className="text-cream-light">Our Properties</span>
           </h1>
-          <p className="text-sage-tan text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-cream-light text-lg md:text-xl max-w-3xl mx-auto">
             Explore our extensive collection of luxury properties across Egypt's most desirable locations.
           </p>
         </motion.div>
@@ -146,7 +146,7 @@ export default function PropertiesPage() {
                         onChange={() => toggleFilter('status', status)}
                         className="rounded text-sage-tan focus:ring-sage-tan"
                       />
-                      <span className="text-sm text-sage-tan capitalize">{status.replace('-', ' ')}</span>
+                      <span className="text-sm text-cream-light capitalize">{status.replace('-', ' ')}</span>
                     </label>
                   ))}
                 </div>
@@ -164,7 +164,7 @@ export default function PropertiesPage() {
                         onChange={() => toggleFilter('type', type)}
                         className="rounded text-sage-tan focus:ring-sage-tan"
                       />
-                      <span className="text-sm text-sage-tan capitalize">{type}</span>
+                      <span className="text-sm text-cream-light capitalize">{type}</span>
                     </label>
                   ))}
                 </div>
@@ -182,7 +182,7 @@ export default function PropertiesPage() {
                         onChange={() => toggleFilter('location', loc)}
                         className="rounded text-sage-tan focus:ring-sage-tan"
                       />
-                      <span className="text-sm text-sage-tan capitalize">{loc.replace('-', ' ')}</span>
+                      <span className="text-sm text-cream-light capitalize">{loc.replace('-', ' ')}</span>
                     </label>
                   ))}
                 </div>
@@ -200,7 +200,7 @@ export default function PropertiesPage() {
                         onChange={() => toggleFilter('bedrooms', beds)}
                         className="rounded text-sage-tan focus:ring-sage-tan"
                       />
-                      <span className="text-sm text-sage-tan">{beds}+ Beds</span>
+                      <span className="text-sm text-cream-light">{beds}+ Beds</span>
                     </label>
                   ))}
                 </div>
@@ -229,7 +229,7 @@ export default function PropertiesPage() {
               <div className="mt-6 text-center">
                 <button
                   onClick={() => setFilters({})}
-                  className="text-sage-tan hover:text-sage-tan-dark font-medium"
+                  className="text-cream-light hover:text-cream-light font-medium"
                 >
                   Clear all filters
                 </button>
@@ -239,7 +239,7 @@ export default function PropertiesPage() {
         </div>
 
         {/* Results Count */}
-        <div className="mb-6 text-sage-tan">
+        <div className="mb-6 text-cream-light">
           Showing {filteredAndSortedProperties.length} {filteredAndSortedProperties.length === 1 ? 'property' : 'properties'}
         </div>
 

@@ -27,9 +27,9 @@ export const CTASection: React.FC = () => {
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
             Ready to Find Your
-            <span className="text-sage-tan"> Dream Property</span>?
+            <span className="text-cream-light"> Dream Property</span>?
           </h2>
-          <p className="text-sage-tan text-lg md:text-xl mb-12 leading-relaxed">
+          <p className="text-cream-light text-lg md:text-xl mb-12 leading-relaxed">
             Our expert team is here to guide you through every step of your Egyptian
             property journey. From viewing to purchase, we make it seamless.
           </p>
