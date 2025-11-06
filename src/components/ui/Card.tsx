@@ -8,6 +8,7 @@ interface CardProps {
   className?: string;
   hover?: boolean;
   glass?: boolean;
+  variant?: 'default' | 'elevated' | 'bordered' | 'neumorphic';
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -15,16 +16,28 @@ export const Card: React.FC<CardProps> = ({
   className = '',
   hover = true,
   glass = false,
+  variant = 'default',
 }) => {
-  const baseStyles = 'rounded-xl overflow-hidden';
-  const glassStyles = glass ? 'glass shadow-lg' : 'bg-white shadow-md';
+  const baseStyles = 'rounded-2xl overflow-hidden transition-all duration-300';
+
+  const variants = {
+    default: glass ? 'glass shadow-md' : 'bg-surface shadow-md hover:shadow-xl',
+    elevated: 'bg-surface shadow-xl hover:shadow-2xl',
+    bordered: 'bg-surface border-2 border-cream-dark hover:border-teal-primary/30',
+    neumorphic: 'neumorphic',
+  };
 
   if (hover) {
     return (
       <motion.div
-        whileHover={{ y: -8, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)' }}
-        transition={{ duration: 0.3 }}
-        className={`${baseStyles} ${glassStyles} ${className}`}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        whileHover={{
+          y: -12,
+          transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
+        }}
+        className={`${baseStyles} ${variants[variant]} ${className} group`}
       >
         {children}
       </motion.div>
@@ -32,8 +45,13 @@ export const Card: React.FC<CardProps> = ({
   }
 
   return (
-    <div className={`${baseStyles} ${glassStyles} ${className}`}>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      className={`${baseStyles} ${variants[variant]} ${className}`}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 };

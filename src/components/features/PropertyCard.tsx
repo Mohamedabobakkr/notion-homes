@@ -2,11 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FaBed, FaBath, FaRuler, FaMapMarkerAlt, FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Property } from '@/types';
-import { Card } from '@/components/ui/Card';
 
 interface PropertyCardProps {
   property: Property;
@@ -38,103 +36,121 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({
 
   const getStatusColor = () => {
     const colors = {
-      'for-sale': 'bg-navy-900',
-      'for-rent': 'bg-gold-600',
-      'both': 'bg-green-600',
+      'for-sale': 'bg-teal-primary',
+      'for-rent': 'bg-teal-accent',
+      'both': 'bg-sage',
     };
     return colors[property.status];
   };
 
   return (
-    <Card className="group overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      whileHover={{ y: -16 }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="group"
+    >
       <Link href={`/properties/${property.id}`}>
-        <div className="relative h-64 overflow-hidden">
-          {/* Property Image */}
-          <div className="w-full h-full bg-sand-200">
-            <div className="w-full h-full flex items-center justify-center text-sand-200">
-              {/* Placeholder for image */}
-              <span className="text-6xl">🏠</span>
+        <div className="bg-surface rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
+          <div className="relative h-72 overflow-hidden">
+            {/* Property Image */}
+            <div className="w-full h-full bg-gradient-to-br from-sage-light to-cream-dark transform group-hover:scale-110 transition-transform duration-700">
+              <div className="w-full h-full flex items-center justify-center text-6xl">
+                🏠
+              </div>
             </div>
+
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-teal-dark/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            {/* Status Badge */}
+            <div className={`absolute top-6 left-6 px-5 py-2 ${getStatusColor()} text-white text-sm font-bold rounded-full shadow-lg backdrop-blur-sm`}>
+              {getStatusBadge()}
+            </div>
+
+            {/* Featured Badge */}
+            {property.featured && (
+              <div className="absolute top-6 right-6 px-5 py-2 bg-gradient-to-r from-teal-accent to-teal-primary text-white text-sm font-bold rounded-full shadow-lg backdrop-blur-sm">
+                ⭐ Featured
+              </div>
+            )}
+
+            {/* Favorite Button */}
+            {onFavoriteToggle && (
+              <motion.button
+                onClick={(e) => {
+                  e.preventDefault();
+                  onFavoriteToggle(property.id);
+                }}
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
+                className="absolute bottom-6 right-6 w-14 h-14 glass-dark rounded-full flex items-center justify-center shadow-xl hover:bg-white/20 transition-colors"
+              >
+                {isFavorite ? (
+                  <FaHeart className="text-red-400 text-xl" />
+                ) : (
+                  <FaRegHeart className="text-white text-xl" />
+                )}
+              </motion.button>
+            )}
           </div>
 
-          {/* Overlay on hover */}
-          <div className="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/20 transition-all duration-300" />
-
-          {/* Status Badge */}
-          <div className={`absolute top-4 left-4 px-3 py-1 ${getStatusColor()} text-white text-sm font-medium rounded-full`}>
-            {getStatusBadge()}
-          </div>
-
-          {/* Featured Badge */}
-          {property.featured && (
-            <div className="absolute top-4 right-4 px-3 py-1 bg-gold-500 text-white text-sm font-medium rounded-full">
-              Featured
+          {/* Property Details */}
+          <div className="p-7">
+            {/* Location */}
+            <div className="flex items-center gap-2 text-teal-primary text-sm font-semibold mb-3">
+              <FaMapMarkerAlt className="text-base" />
+              <span className="capitalize">{property.location.replace('-', ' ')}</span>
             </div>
-          )}
 
-          {/* Favorite Button */}
-          {onFavoriteToggle && (
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                onFavoriteToggle(property.id);
-              }}
-              className="absolute bottom-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
-            >
-              {isFavorite ? (
-                <FaHeart className="text-red-500 text-lg" />
-              ) : (
-                <FaRegHeart className="text-charcoal-900 text-lg" />
-              )}
-            </button>
-          )}
-        </div>
+            {/* Title */}
+            <h3 className="text-2xl font-bold text-teal-dark mb-4 group-hover:text-teal-primary transition-colors line-clamp-2 leading-tight">
+              {property.title}
+            </h3>
 
-        {/* Property Details */}
-        <div className="p-6">
-          {/* Location */}
-          <div className="flex items-center gap-2 text-charcoal-800 text-sm mb-2">
-            <FaMapMarkerAlt />
-            <span className="capitalize">{property.location.replace('-', ' ')}</span>
-          </div>
-
-          {/* Title */}
-          <h3 className="text-xl font-bold text-navy-900 mb-3 group-hover:text-gold-600 transition-colors line-clamp-2 font-heading">
-            {property.title}
-          </h3>
-
-          {/* Features */}
-          <div className="flex items-center gap-6 mb-4 text-charcoal-800">
-            <div className="flex items-center gap-2">
-              <FaBed className="text-gold-600" />
-              <span className="text-sm">{property.bedrooms}</span>
+            {/* Features */}
+            <div className="flex items-center gap-6 mb-6 text-sage">
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-cream-mint flex items-center justify-center">
+                  <FaBed className="text-teal-primary text-lg" />
+                </div>
+                <span className="text-teal-dark font-semibold">{property.bedrooms}</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-cream-mint flex items-center justify-center">
+                  <FaBath className="text-teal-primary text-lg" />
+                </div>
+                <span className="text-teal-dark font-semibold">{property.bathrooms}</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <div className="w-10 h-10 rounded-xl bg-cream-mint flex items-center justify-center">
+                  <FaRuler className="text-teal-primary text-lg" />
+                </div>
+                <span className="text-teal-dark font-semibold">{property.size}m²</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <FaBath className="text-gold-600" />
-              <span className="text-sm">{property.bathrooms}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <FaRuler className="text-gold-600" />
-              <span className="text-sm">{property.size}m²</span>
-            </div>
-          </div>
 
-          {/* Price */}
-          <div className="flex items-center justify-between pt-4 border-t border-sand-200">
-            <div>
-              <p className="text-2xl font-bold text-navy-900">
-                {formatPrice(property.priceGBP)}
-                {property.status === 'for-rent' && <span className="text-sm font-normal">/month</span>}
-              </p>
+            {/* Price & CTA */}
+            <div className="flex items-center justify-between pt-6 border-t-2 border-cream-light">
+              <div>
+                <p className="text-xs text-sage font-medium mb-1">Starting from</p>
+                <p className="text-3xl font-extrabold text-teal-dark">
+                  {formatPrice(property.priceGBP)}
+                  {property.status === 'for-rent' && <span className="text-sm font-normal text-sage">/mo</span>}
+                </p>
+              </div>
+              <motion.div
+                className="flex items-center gap-2 text-teal-primary font-bold group-hover:gap-4 transition-all"
+              >
+                <span>View</span>
+                <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+              </motion.div>
             </div>
-            <motion.div
-              className="text-gold-600 font-medium group-hover:translate-x-2 transition-transform"
-            >
-              View Details →
-            </motion.div>
           </div>
         </div>
       </Link>
-    </Card>
+    </motion.div>
   );
 };

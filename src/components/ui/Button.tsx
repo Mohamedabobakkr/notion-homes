@@ -4,8 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 interface ButtonProps {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'glass';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   children: React.ReactNode;
   fullWidth?: boolean;
   icon?: React.ReactNode;
@@ -26,32 +26,39 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   disabled = false,
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center gap-2 font-medium transition-all duration-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseStyles = 'inline-flex items-center justify-center gap-3 font-semibold transition-all duration-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group';
 
   const variants = {
-    primary: 'bg-gold-500 text-white hover:bg-gold-600 shadow-md hover:shadow-lg',
-    secondary: 'bg-navy-900 text-white hover:bg-navy-800 shadow-md hover:shadow-lg',
-    outline: 'border-2 border-navy-900 text-navy-900 hover:bg-navy-900 hover:text-white',
-    ghost: 'text-navy-900 hover:bg-sand-100',
+    primary: 'bg-gradient-to-r from-teal-primary to-teal-accent text-white shadow-lg hover:shadow-xl hover:shadow-teal-primary/30 hover:scale-[1.02] active:scale-[0.98]',
+    secondary: 'bg-gradient-to-r from-teal-dark to-teal-primary text-white shadow-lg hover:shadow-xl hover:shadow-teal-dark/30 hover:scale-[1.02] active:scale-[0.98]',
+    outline: 'border-2 border-teal-primary text-teal-primary hover:bg-teal-primary hover:text-white hover:border-teal-primary shadow-sm hover:shadow-md',
+    ghost: 'text-teal-primary hover:bg-teal-primary/10 hover:text-teal-dark',
+    glass: 'glass text-teal-dark hover:bg-white/90 shadow-md hover:shadow-lg',
   };
 
   const sizes = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+    sm: 'px-5 py-2.5 text-sm rounded-lg',
+    md: 'px-7 py-3.5 text-base rounded-xl',
+    lg: 'px-9 py-4 text-lg rounded-xl',
+    xl: 'px-12 py-5 text-xl rounded-2xl',
   };
 
   return (
     <motion.button
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: variant === 'outline' || variant === 'ghost' ? 1.02 : 1 }}
       whileTap={{ scale: 0.98 }}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${fullWidth ? 'w-full' : ''} ${className}`}
       onClick={onClick}
       type={type}
       disabled={disabled}
     >
-      {icon && <span>{icon}</span>}
-      {children}
+      {/* Shimmer effect for primary buttons */}
+      {(variant === 'primary' || variant === 'secondary') && (
+        <span className="absolute inset-0 shimmer pointer-events-none" />
+      )}
+
+      {icon && <span className="relative z-10">{icon}</span>}
+      <span className="relative z-10">{children}</span>
     </motion.button>
   );
 };
