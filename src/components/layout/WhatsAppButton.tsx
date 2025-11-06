@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
 import { contactInfo } from '@/data/contact';
 
@@ -35,14 +35,28 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       onClick={handleClick}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-green-500 text-white rounded-full shadow-2xl hover:bg-green-600 transition-all group"
+      className="fixed bottom-8 right-8 z-50 flex items-center gap-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full shadow-2xl hover:shadow-green-500/50 transition-all group overflow-hidden"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+      initial={{ scale: 0, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 1 }}
     >
-      <div className="p-4">
+      {/* Pulse effect */}
+      <motion.div
+        className="absolute inset-0 bg-green-400 rounded-full"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.5, 0, 0.5],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+
+      <div className="relative p-4 z-10">
         <FaWhatsapp className="text-3xl" />
       </div>
 
@@ -52,7 +66,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: 'auto', opacity: 1 }}
             exit={{ width: 0, opacity: 0 }}
-            className="pr-5 font-medium whitespace-nowrap overflow-hidden"
+            className="pr-6 font-bold whitespace-nowrap overflow-hidden relative z-10"
           >
             Chat with us
           </motion.span>
@@ -61,6 +75,3 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
     </motion.button>
   );
 };
-
-// For the animation to work properly, we need to import AnimatePresence
-import { AnimatePresence } from 'framer-motion';
