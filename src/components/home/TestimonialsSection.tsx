@@ -12,7 +12,7 @@ export const TestimonialsSection: React.FC = () => {
   const displayedTestimonials = testimonials.slice(0, 3);
 
   return (
-    <section className="section-padding-lg bg-sand-50">
+    <section className="section-padding-lg bg-cream-light">
       <Container>
         {/* Section Header */}
         <motion.div
@@ -22,13 +22,13 @@ export const TestimonialsSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-gold-600 text-lg mb-4 tracking-wider uppercase font-medium">
+          <p className="text-teal-primary text-lg mb-4 tracking-wider uppercase font-medium">
             Client Stories
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-teal-dark mb-6">
             What Our Clients Say
           </h2>
-          <p className="text-charcoal-800 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-teal-primary/80 text-lg md:text-xl max-w-3xl mx-auto">
             Don't just take our word for it. Hear from UK clients who've successfully
             found their dream Egyptian properties with us.
           </p>
@@ -53,7 +53,7 @@ export const TestimonialsSection: React.FC = () => {
                 </div>
 
                 {/* Testimonial Text */}
-                <p className="text-charcoal-800 leading-relaxed mb-6 italic">
+                <p className="text-teal-primary/80 leading-relaxed mb-6 italic">
                   "{testimonial.text}"
                 </p>
 
@@ -65,10 +65,10 @@ export const TestimonialsSection: React.FC = () => {
                     </span>
                   </div>
                   <div>
-                    <div className="font-bold text-navy-900">
+                    <div className="font-bold text-teal-dark">
                       {testimonial.name}
                     </div>
-                    <div className="text-sm text-charcoal-800">
+                    <div className="text-sm text-teal-primary/70">
                       {testimonial.location}
                     </div>
                   </div>

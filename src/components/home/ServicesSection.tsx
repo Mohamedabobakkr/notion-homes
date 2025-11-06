@@ -36,7 +36,7 @@ const services = [
 
 export const ServicesSection: React.FC = () => {
   return (
-    <section className="section-padding-lg bg-white">
+    <section className="section-padding-lg bg-surface">
       <Container>
         {/* Section Header */}
         <motion.div
@@ -46,13 +46,13 @@ export const ServicesSection: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-gold-600 text-lg mb-4 tracking-wider uppercase font-medium">
+          <p className="text-teal-primary text-lg mb-4 tracking-wider uppercase font-medium">
             What We Offer
           </p>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-navy-900 mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-teal-dark mb-6">
             Our Services
           </h2>
-          <p className="text-charcoal-800 text-lg md:text-xl max-w-3xl mx-auto">
+          <p className="text-teal-primary/80 text-lg md:text-xl max-w-3xl mx-auto">
             From property sales to complete management solutions, we provide end-to-end
             services for your Egyptian property journey.
           </p>
@@ -75,13 +75,13 @@ export const ServicesSection: React.FC = () => {
                     <div className="w-16 h-16 bg-gold-500/10 rounded-full flex items-center justify-center mx-auto mb-6">
                       <Icon className="text-3xl text-gold-600" />
                     </div>
-                    <h3 className="text-xl font-bold text-navy-900 mb-4 font-heading">
+                    <h3 className="text-xl font-bold text-teal-dark mb-4 font-heading">
                       {service.title}
                     </h3>
-                    <p className="text-charcoal-800 leading-relaxed">
+                    <p className="text-teal-primary/70 leading-relaxed">
                       {service.description}
                     </p>
-                    <div className="mt-6 text-gold-600 font-medium">
+                    <div className="mt-6 text-teal-primary font-medium">
                       Learn More →
                     </div>
                   </Card>
