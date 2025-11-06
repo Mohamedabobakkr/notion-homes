@@ -1,0 +1,56 @@
+import { Testimonial } from '@/types';
+
+export const testimonials: Testimonial[] = [
+  {
+    id: '1',
+    name: 'Sarah & James Mitchell',
+    location: 'London, UK',
+    photo: '/images/testimonials/client-1.jpg',
+    rating: 5,
+    text: 'Notion Homes made our dream of owning a vacation property in Egypt a reality. Their team handled everything from viewing to purchase, and we couldn\'t be happier with our beachfront villa in Hurghada!',
+    propertyId: 'hurghada-luxury-villa-1',
+  },
+  {
+    id: '2',
+    name: 'Mohammed Al-Rashid',
+    location: 'Manchester, UK',
+    photo: '/images/testimonials/client-2.jpg',
+    rating: 5,
+    text: 'Exceptional service from start to finish. The team\'s knowledge of the Egyptian property market is outstanding. They found us the perfect investment property in El Gouna with fantastic rental yields.',
+    propertyId: 'al-gouna-penthouse-1',
+  },
+  {
+    id: '3',
+    name: 'Emma Thompson',
+    location: 'Birmingham, UK',
+    photo: '/images/testimonials/client-3.jpg',
+    rating: 5,
+    text: 'As a first-time buyer of overseas property, I was nervous. Notion Homes guided me through every step with patience and professionalism. My apartment in Hurghada is perfect for holidays and generates excellent rental income!',
+    propertyId: 'hurghada-apartment-1',
+  },
+  {
+    id: '4',
+    name: 'David & Lisa Chen',
+    location: 'Edinburgh, UK',
+    photo: '/images/testimonials/client-4.jpg',
+    rating: 5,
+    text: 'We\'ve used Notion Homes for both purchasing and property management. Their attention to detail and local expertise is unmatched. Our North Coast villa is always well-maintained and rented out consistently.',
+    propertyId: 'north-coast-villa-1',
+  },
+  {
+    id: '5',
+    name: 'Ahmed Hassan',
+    location: 'Leeds, UK',
+    photo: '/images/testimonials/client-5.jpg',
+    rating: 5,
+    text: 'The curated trip package was brilliant! We got to view multiple properties, experience local culture, and the team made all arrangements. We bought our dream penthouse and had an amazing holiday at the same time.',
+  },
+  {
+    id: '6',
+    name: 'Rachel Green',
+    location: 'Bristol, UK',
+    photo: '/images/testimonials/client-6.jpg',
+    rating: 5,
+    text: 'Professional, reliable, and trustworthy. Notion Homes has been managing our rental property for two years now, and we receive regular updates and consistent rental income. Highly recommended!',
+  },
+];
