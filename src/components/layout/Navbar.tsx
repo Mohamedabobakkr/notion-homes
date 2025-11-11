@@ -3,8 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaBars, FaTimes, FaPhone } from 'react-icons/fa';
+import { FaBars, FaTimes, FaMapMarkerAlt } from 'react-icons/fa';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 
@@ -38,25 +37,48 @@ export const Navbar: React.FC = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'glass shadow-xl py-4'
-          : 'bg-dark-olive/95 backdrop-blur-sm py-6 shadow-md'
+          ? 'bg-cream-light shadow-md py-4'
+          : 'bg-cream-bg py-5'
       }`}
     >
       <Container>
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col"
+          <Link href="/" className="flex items-center gap-3">
+            {/* Logo Icon */}
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-10 h-10 md:w-12 md:h-12"
             >
-              <span className="text-2xl md:text-3xl font-extrabold text-cream-light font-heading">
-                Notion Homes
-              </span>
-              <span className="text-xs text-cream-light tracking-widest uppercase font-semibold">
-                Luxury Egyptian Properties
-              </span>
-            </motion.div>
+              {/* House outline */}
+              <path
+                d="M15 45L50 15L85 45V85H15V45Z"
+                stroke="#8B7355"
+                strokeWidth="3"
+                fill="none"
+              />
+              {/* NH Text */}
+              <text
+                x="50"
+                y="68"
+                fontFamily="Playfair Display, serif"
+                fontSize="32"
+                fontWeight="600"
+                fill="#8B7355"
+                textAnchor="middle"
+              >
+                NH
+              </text>
+            </svg>
+
+            {/* Brand Text */}
+            <div className="text-2xl md:text-3xl font-heading font-semibold" style={{ color: '#8B7355' }}>
+              NOTION HOMES
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -65,33 +87,28 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-base font-semibold transition-colors relative group ${
+                className={`text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? 'text-cream-light'
-                    : 'text-cream-light hover:text-cream-light'
+                    ? 'text-text-primary font-semibold'
+                    : 'text-text-secondary hover:text-text-primary'
                 }`}
               >
                 {link.label}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-sage-tan transition-all ${
-                    pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
-                />
               </Link>
             ))}
+
+            {/* Locations */}
+            <div className="flex items-center gap-2 text-sm font-medium text-text-secondary border-l border-border-light pl-6">
+              <FaMapMarkerAlt className="text-olive-green" />
+              <span>Egypt • London</span>
+            </div>
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <a
-              href="tel:+442012345678"
-              className="text-cream-light hover:text-cream-light transition-colors"
-            >
-              <FaPhone className="text-xl" />
-            </a>
+          <div className="hidden lg:block">
             <Link href="/contact">
-              <Button size="sm" variant="primary">
-                Get Started
+              <Button size="md" variant="filled">
+                Book a Tour
               </Button>
             </Link>
           </div>
@@ -99,7 +116,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-cream-light text-2xl focus:outline-none hover:text-cream-light transition-colors"
+            className="lg:hidden text-text-primary text-2xl focus:outline-none"
             aria-label="Toggle menu"
           >
             {isOpen ? <FaTimes /> : <FaBars />}
@@ -107,46 +124,44 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden"
-            >
-              <div className="py-6 space-y-4">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`block text-lg font-semibold transition-colors ${
-                      pathname === link.href
-                        ? 'text-cream-light'
-                        : 'text-cream-light hover:text-cream-light'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                <div className="pt-4 space-y-3">
-                  <a
-                    href="tel:+442012345678"
-                    className="flex items-center gap-2 text-cream-light hover:text-cream-light transition-colors font-semibold"
-                  >
-                    <FaPhone /> Call Us
-                  </a>
-                  <Link href="/contact">
-                    <Button fullWidth variant="primary">
-                      Get Started
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {isOpen && (
+          <div className="lg:hidden pt-6 pb-4 space-y-4 border-t border-border-light mt-4 animate-in slide-in-from-top duration-300">
+            {navLinks.map((link, index) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`block text-base font-medium transition-all hover:translate-x-2 ${
+                  pathname === link.href
+                    ? 'text-text-primary font-semibold'
+                    : 'text-text-secondary'
+                }`}
+                style={{
+                  animation: `slideDown 0.3s ease-out ${index * 0.05}s both`
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* Locations - Mobile */}
+            <div className="flex items-center gap-2 text-sm font-medium text-text-secondary pt-2 border-t border-border-light" style={{
+              animation: `slideDown 0.3s ease-out ${navLinks.length * 0.05}s both`
+            }}>
+              <FaMapMarkerAlt className="text-olive-green" />
+              <span>Egypt • London</span>
+            </div>
+
+            <div className="pt-4" style={{
+              animation: `slideDown 0.3s ease-out ${(navLinks.length + 1) * 0.05}s both`
+            }}>
+              <Link href="/contact">
+                <Button fullWidth variant="filled">
+                  Book a Tour
+                </Button>
+              </Link>
+            </div>
+          </div>
+        )}
       </Container>
     </nav>
   );

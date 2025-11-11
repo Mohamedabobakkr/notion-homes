@@ -169,21 +169,16 @@ export default function AboutPage() {
             Our Leadership Team
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
-                name: 'Sarah Mitchell',
-                role: 'Founder & CEO',
+                name: 'Omar Tamer',
+                role: 'Co-Founder & CEO',
                 credentials: ['15+ years property experience', 'UK & Egypt markets expert'],
               },
               {
-                name: 'Ahmed Hassan',
-                role: 'Director of Operations',
-                credentials: ['Egyptian market specialist', 'Legal & compliance expert'],
-              },
-              {
-                name: 'James Thompson',
-                role: 'Head of UK Relations',
+                name: 'ZI',
+                role: 'Co-Founder & Head of UK Relations',
                 credentials: ['UK client services', 'Investment advisor'],
               },
             ].map((member, index) => (

@@ -43,7 +43,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <Navbar />
-        {children}
+        <main className="pt-20">
+          {children}
+        </main>
         <Footer />
         <WhatsAppButton />
       </body>

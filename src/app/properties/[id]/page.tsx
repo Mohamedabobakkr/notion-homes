@@ -1,13 +1,11 @@
-import React from 'react';
 import { notFound } from 'next/navigation';
-import { FaBed, FaBath, FaRuler, FaMapMarkerAlt, FaCalendar, FaCheckCircle, FaWhatsapp, FaPhone, FaEnvelope, FaShare } from 'react-icons/fa';
+import { FaBed, FaBath, FaRuler, FaMapMarkerAlt, FaCheckCircle, FaShare } from 'react-icons/fa';
 import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { PropertyCard } from '@/components/features/PropertyCard';
-import { CurrencyConverter } from '@/components/features/CurrencyConverter';
-import { properties } from '@/data/properties';
-import { contactInfo } from '@/data/contact';
+import { PropertyImageGallery } from '@/components/features/PropertyImageGallery';
+import { PropertyContactForm } from '@/components/features/PropertyContactForm';
+import { getPropertyById, getAllProperties } from '@/lib/sanity-queries';
 import { formatPrice, getLocationLabel, getPropertyTypeLabel } from '@/lib/utils';
 
 interface Props {
@@ -16,14 +14,15 @@ interface Props {
 
 export default async function PropertyPage({ params }: Props) {
   const { id } = await params;
-  const property = properties.find(p => p.id === id);
+  const property = await getPropertyById(id);
 
   if (!property) {
     notFound();
   }
 
   // Get similar properties
-  const similarProperties = properties
+  const allProperties = await getAllProperties();
+  const similarProperties = allProperties
     .filter(p =>
       p.id !== property.id &&
       (p.type === property.type || p.location === property.location)
@@ -46,22 +45,7 @@ export default async function PropertyPage({ params }: Props) {
           {/* Main Content */}
           <div className="lg:col-span-2">
             {/* Image Gallery */}
-            <div className="mb-8">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2 h-96 bg-slate-gray rounded-xl overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-9xl">🏠</span>
-                  </div>
-                </div>
-                {property.images.slice(1, 5).map((_, index) => (
-                  <div key={index} className="h-48 bg-slate-gray rounded-xl overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-5xl">🏠</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <PropertyImageGallery property={property} />
 
             {/* Property Header */}
             <div className="mb-8">
@@ -171,34 +155,38 @@ export default async function PropertyPage({ params }: Props) {
             </div>
 
             {/* Features */}
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold text-cream-light mb-4">Key Features</h2>
-              <Card className="p-6 !bg-charcoal-green">
-                <div className="grid grid-cols-2 gap-4">
-                  {property.features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <FaCheckCircle className="text-sage-tan flex-shrink-0" />
-                      <span className="text-cream-light">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </div>
+            {property.features && property.features.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold text-cream-light mb-4">Key Features</h2>
+                <Card className="p-6 !bg-charcoal-green">
+                  <div className="grid grid-cols-2 gap-4">
+                    {property.features.map((feature, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <FaCheckCircle className="text-sage-tan flex-shrink-0" />
+                        <span className="text-cream-light">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              </div>
+            )}
 
             {/* Amenities */}
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold text-cream-light mb-4">Amenities</h2>
-              <Card className="p-6 !bg-charcoal-green">
-                <div className="grid grid-cols-2 gap-4">
-                  {property.amenities.map((amenity, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <FaCheckCircle className="text-sage-tan flex-shrink-0" />
-                      <span className="text-cream-light">{amenity}</span>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            </div>
+            {property.amenities && property.amenities.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold text-cream-light mb-4">Amenities</h2>
+                <Card className="p-6 !bg-charcoal-green">
+                  <div className="grid grid-cols-2 gap-4">
+                    {property.amenities.map((amenity, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <FaCheckCircle className="text-sage-tan flex-shrink-0" />
+                        <span className="text-cream-light">{amenity}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              </div>
+            )}
 
             {/* Location Map Placeholder */}
             <div className="mb-8">
@@ -237,40 +225,8 @@ export default async function PropertyPage({ params }: Props) {
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <div className="sticky top-32 space-y-6">
-              {/* Contact Card */}
-              <Card className="p-6 !bg-charcoal-green">
-                <h3 className="text-xl font-bold text-cream-light mb-6">Contact Us About This Property</h3>
-                <div className="space-y-4">
-                  <a
-                    href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hi, I'm interested in ${property.title} (ID: ${property.id})`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button fullWidth variant="primary" icon={<FaWhatsapp />}>
-                      WhatsApp Inquiry
-                    </Button>
-                  </a>
-                  <a href={`tel:${contactInfo.phone.uk.replace(/\s/g, '')}`}>
-                    <Button fullWidth variant="secondary" icon={<FaPhone />}>
-                      Call Us
-                    </Button>
-                  </a>
-                  <a href={`mailto:${contactInfo.email}?subject=Inquiry about ${property.title}`}>
-                    <Button fullWidth variant="outline" icon={<FaEnvelope />}>
-                      Email Us
-                    </Button>
-                  </a>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-slate-gray text-sm text-cream-light">
-                  <p className="mb-2"><strong>UK Office:</strong> {contactInfo.phone.uk}</p>
-                  <p><strong>Egypt Office:</strong> {contactInfo.phone.egypt}</p>
-                </div>
-              </Card>
-
-              {/* Currency Converter */}
-              <CurrencyConverter />
+            <div className="sticky top-32">
+              <PropertyContactForm property={property} />
             </div>
           </div>
         </div>

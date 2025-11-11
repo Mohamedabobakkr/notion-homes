@@ -1,22 +1,39 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { PropertyCard } from '@/components/features/PropertyCard';
-import { getFeaturedProperties } from '@/data/properties';
-import { toggleFavorite, isFavorite } from '@/lib/utils';
+import { getFeaturedProperties } from '@/lib/sanity-queries';
+import { Property } from '@/types';
 
 export const FeaturedProperties: React.FC = () => {
-  const featuredProperties = getFeaturedProperties();
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [featuredProperties, setFeaturedProperties] = useState<Property[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleFavoriteToggle = (propertyId: string) => {
-    const updatedFavorites = toggleFavorite(propertyId);
-    setFavorites(updatedFavorites);
-  };
+  useEffect(() => {
+    async function fetchProperties() {
+      setLoading(true);
+      const data = await getFeaturedProperties();
+      setFeaturedProperties(data);
+      setLoading(false);
+    }
+    fetchProperties();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="section-padding-lg bg-charcoal-green">
+        <Container>
+          <div className="text-center py-16">
+            <p className="text-xl text-cream-light">Loading featured properties...</p>
+          </div>
+        </Container>
+      </section>
+    );
+  }
 
   return (
     <section className="section-padding-lg bg-charcoal-green">
@@ -51,11 +68,7 @@ export const FeaturedProperties: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <PropertyCard
-                property={property}
-                onFavoriteToggle={handleFavoriteToggle}
-                isFavorite={isFavorite(property.id)}
-              />
+              <PropertyCard property={property} />
             </motion.div>
           ))}
         </div>
@@ -69,7 +82,7 @@ export const FeaturedProperties: React.FC = () => {
           className="text-center"
         >
           <Link href="/properties">
-            <Button size="lg" variant="primary">
+            <Button size="lg" variant="filled">
               View All Properties
             </Button>
           </Link>

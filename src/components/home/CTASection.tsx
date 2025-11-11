@@ -40,29 +40,32 @@ export const CTASection: React.FC = () => {
               href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              className="bg-slate-gray hover:bg-charcoal-green p-6 rounded-xl flex flex-col items-center gap-3 transition-colors text-cream-light"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="bg-cream-light/10 hover:bg-cream-light/20 border border-cream-light/30 p-6 rounded-lg flex flex-col items-center gap-3 transition-all backdrop-blur-sm group"
             >
-              <FaWhatsapp className="text-4xl" />
-              <span className="font-medium">WhatsApp Us</span>
+              <FaWhatsapp className="text-3xl text-[#25D366] group-hover:scale-110 transition-transform" />
+              <span className="font-medium text-cream-light">WhatsApp Us</span>
             </motion.a>
 
             <motion.a
               href={`tel:${contactInfo.phone.uk.replace(/\s/g, '')}`}
-              whileHover={{ scale: 1.05 }}
-              className="bg-sage-tan hover:bg-sage-tan-dark p-6 rounded-xl flex flex-col items-center gap-3 transition-colors text-dark-olive"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="bg-cream-light/10 hover:bg-cream-light/20 border border-cream-light/30 p-6 rounded-lg flex flex-col items-center gap-3 transition-all backdrop-blur-sm group"
             >
-              <FaPhone className="text-4xl" />
-              <span className="font-medium">Call Us Now</span>
+              <FaPhone className="text-3xl text-olive-green group-hover:scale-110 transition-transform" />
+              <span className="font-medium text-cream-light">Call Us Now</span>
             </motion.a>
 
             <motion.a
               href={`mailto:${contactInfo.email}`}
-              whileHover={{ scale: 1.05 }}
-              className="bg-charcoal-green hover:bg-slate-gray p-6 rounded-xl flex flex-col items-center gap-3 transition-colors text-cream-light"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="bg-cream-light/10 hover:bg-cream-light/20 border border-cream-light/30 p-6 rounded-lg flex flex-col items-center gap-3 transition-all backdrop-blur-sm group"
             >
-              <FaEnvelope className="text-4xl" />
-              <span className="font-medium">Email Us</span>
+              <FaEnvelope className="text-3xl text-sage-tan group-hover:scale-110 transition-transform" />
+              <span className="font-medium text-cream-light">Email Us</span>
             </motion.a>
           </div>
 

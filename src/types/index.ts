@@ -1,6 +1,6 @@
 export type PropertyType = 'villa' | 'apartment' | 'penthouse';
 export type PropertyStatus = 'for-sale' | 'for-rent' | 'both';
-export type PropertyLocation = 'hurghada' | 'al-gouna' | 'north-coast' | 'cairo';
+export type PropertyLocation = 'hurghada' | 'al-gouna' | 'north-coast' | 'cairo' | 'london';
 
 export interface Property {
   id: string;
