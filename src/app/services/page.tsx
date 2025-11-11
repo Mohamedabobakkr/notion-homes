@@ -94,7 +94,7 @@ export default function ServicesPage() {
 
                         <div className="mt-8">
                           <Link href="/contact">
-                            <Button variant="primary">Get Started</Button>
+                            <Button variant="filled">Get Started</Button>
                           </Link>
                         </div>
                       </div>
@@ -119,7 +119,7 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button size="lg" variant="primary">
+                <Button size="lg" variant="filled">
                   Contact Us
                 </Button>
               </Link>

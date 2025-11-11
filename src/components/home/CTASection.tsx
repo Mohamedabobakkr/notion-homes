@@ -72,7 +72,7 @@ export const CTASection: React.FC = () => {
           {/* Primary CTA */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/properties">
-              <Button size="lg" variant="primary">
+              <Button size="lg" variant="filled">
                 Browse All Properties
               </Button>
             </Link>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { FaFilter } from 'react-icons/fa';
@@ -12,7 +12,7 @@ import { PropertyCardSkeleton } from '@/components/ui/Skeleton';
 import { getAllProperties } from '@/lib/sanity-queries';
 import { Property, PropertyFilters, PropertySort, PropertyType, PropertyStatus, PropertyLocation } from '@/types';
 
-export default function PropertiesPage() {
+function PropertiesContent() {
   const searchParams = useSearchParams();
   const [properties, setProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
@@ -329,5 +329,35 @@ export default function PropertiesPage() {
         )}
       </Container>
     </main>
+  );
+}
+
+export default function PropertiesPage() {
+  return (
+    <Suspense fallback={
+      <main className="pt-32 pb-20 bg-dark-olive">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mb-12 text-center"
+          >
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
+              Browse <span className="text-cream-light">Our Properties</span>
+            </h1>
+            <p className="text-cream-light text-lg md:text-xl max-w-3xl mx-auto">
+              Loading properties...
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <PropertyCardSkeleton key={i} />
+            ))}
+          </div>
+        </Container>
+      </main>
+    }>
+      <PropertiesContent />
+    </Suspense>
   );
 }

@@ -215,7 +215,7 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button size="lg" variant="primary">
+                <Button size="lg" variant="filled">
                   Get in Touch
                 </Button>
               </Link>

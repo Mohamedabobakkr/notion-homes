@@ -144,7 +144,7 @@ export default function ContactPage() {
 
                     <Button
                       type="submit"
-                      variant="primary"
+                      variant="filled"
                       size="lg"
                       fullWidth
                       disabled={isSubmitting}
