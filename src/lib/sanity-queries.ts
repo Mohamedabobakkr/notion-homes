@@ -1,5 +1,5 @@
 import { client } from './sanity';
-import { Property, PropertyStatus } from '@/types';
+import { Property, PropertyStatus, FAQ } from '@/types';
 
 // GROQ query for all properties
 const propertiesQuery = `*[_type == "property"] | order(_createdAt desc) {
@@ -132,6 +132,27 @@ export async function getPropertiesByStatus(status: PropertyStatus): Promise<Pro
     return properties;
   } catch (error) {
     console.error('Error fetching properties by status:', error);
+    return [];
+  }
+}
+
+// GROQ query for FAQs
+const faqsQuery = `*[_type == "faq" && isPublished == true] | order(order asc, _createdAt desc) {
+  "id": _id,
+  question,
+  answer,
+  category,
+  order,
+  isPublished
+}`;
+
+// Fetch all published FAQs
+export async function getAllFAQs(): Promise<FAQ[]> {
+  try {
+    const faqs = await client.fetch<FAQ[]>(faqsQuery);
+    return faqs;
+  } catch (error) {
+    console.error('Error fetching FAQs:', error);
     return [];
   }
 }

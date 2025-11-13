@@ -9,10 +9,12 @@ import { Button } from '@/components/ui/Button';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/properties', label: 'Properties' },
+  { href: '/buy', label: 'Buy' },
+  { href: '/rent', label: 'Rent' },
+  { href: '/list', label: 'List' },
   { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About Us' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/faqs', label: 'FAQs' },
+  { href: '/contact', label: 'Contact Us' },
 ];
 
 export const Navbar: React.FC = () => {
@@ -37,9 +39,10 @@ export const Navbar: React.FC = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-cream-light shadow-md py-4'
-          : 'bg-cream-bg py-5'
+          ? 'shadow-md py-4'
+          : 'py-5'
       }`}
+      style={{ backgroundColor: '#0A3B28' }}
     >
       <Container>
         <div className="flex items-center justify-between">
@@ -57,26 +60,27 @@ export const Navbar: React.FC = () => {
               {/* House outline */}
               <path
                 d="M15 45L50 15L85 45V85H15V45Z"
-                stroke="#8B7355"
+                stroke="#DBC086"
                 strokeWidth="3"
                 fill="none"
               />
-              {/* NH Text */}
+              {/* NH Text in Playfair Display - centered and touching */}
               <text
-                x="50"
-                y="68"
+                x="48"
+                y="70"
                 fontFamily="Playfair Display, serif"
-                fontSize="32"
+                fontSize="36"
                 fontWeight="600"
-                fill="#8B7355"
+                fill="#DBC086"
                 textAnchor="middle"
+                letterSpacing="-8"
               >
                 NH
               </text>
             </svg>
 
             {/* Brand Text */}
-            <div className="text-2xl md:text-3xl font-heading font-semibold" style={{ color: '#8B7355' }}>
+            <div className="text-2xl md:text-3xl font-heading font-semibold" style={{ color: '#DBC086' }}>
               NOTION HOMES
             </div>
           </Link>
@@ -89,18 +93,19 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? 'text-text-primary font-semibold'
-                    : 'text-text-secondary hover:text-text-primary'
+                    ? 'font-semibold'
+                    : 'hover:opacity-80'
                 }`}
+                style={{ color: '#DBC086' }}
               >
                 {link.label}
               </Link>
             ))}
 
             {/* Locations */}
-            <div className="flex items-center gap-2 text-sm font-medium text-text-secondary border-l border-border-light pl-6">
-              <FaMapMarkerAlt className="text-olive-green" />
-              <span>Egypt • London</span>
+            <div className="flex items-center gap-2 text-sm font-medium border-l pl-6" style={{ color: '#DBC086', borderColor: 'rgba(219, 192, 134, 0.3)' }}>
+              <FaMapMarkerAlt style={{ color: '#DBC086' }} />
+              <span style={{ color: '#DBC086' }}>Egypt • London</span>
             </div>
           </div>
 
@@ -116,7 +121,8 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-text-primary text-2xl focus:outline-none"
+            className="lg:hidden text-2xl focus:outline-none"
+            style={{ color: '#DBC086' }}
             aria-label="Toggle menu"
           >
             {isOpen ? <FaTimes /> : <FaBars />}
@@ -125,17 +131,18 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden pt-6 pb-4 space-y-4 border-t border-border-light mt-4 animate-in slide-in-from-top duration-300">
+          <div className="lg:hidden pt-6 pb-4 space-y-4 border-t mt-4 animate-in slide-in-from-top duration-300" style={{ borderColor: 'rgba(219, 192, 134, 0.3)' }}>
             {navLinks.map((link, index) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`block text-base font-medium transition-all hover:translate-x-2 ${
                   pathname === link.href
-                    ? 'text-text-primary font-semibold'
-                    : 'text-text-secondary'
+                    ? 'font-semibold'
+                    : ''
                 }`}
                 style={{
+                  color: '#DBC086',
                   animation: `slideDown 0.3s ease-out ${index * 0.05}s both`
                 }}
               >
@@ -144,11 +151,13 @@ export const Navbar: React.FC = () => {
             ))}
 
             {/* Locations - Mobile */}
-            <div className="flex items-center gap-2 text-sm font-medium text-text-secondary pt-2 border-t border-border-light" style={{
+            <div className="flex items-center gap-2 text-sm font-medium pt-2 border-t" style={{
+              color: '#DBC086',
+              borderColor: 'rgba(219, 192, 134, 0.3)',
               animation: `slideDown 0.3s ease-out ${navLinks.length * 0.05}s both`
             }}>
-              <FaMapMarkerAlt className="text-olive-green" />
-              <span>Egypt • London</span>
+              <FaMapMarkerAlt style={{ color: '#DBC086' }} />
+              <span style={{ color: '#DBC086' }}>Egypt • London</span>
             </div>
 
             <div className="pt-4" style={{

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { Container } from '@/components/ui/Container';
 import { contactInfo } from '@/data/contact';
 
@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
               </p>
               <div className="flex space-x-4">
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/profile.php?id=61583631207320"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-dark-olive hover:bg-charcoal-green text-cream-light flex items-center justify-center transition-colors"
@@ -31,31 +31,13 @@ export const Footer: React.FC = () => {
                   <FaFacebookF />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/notion.homes/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-dark-olive hover:bg-charcoal-green text-cream-light flex items-center justify-center transition-colors"
                   aria-label="Instagram"
                 >
                   <FaInstagram />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-dark-olive hover:bg-charcoal-green text-cream-light flex items-center justify-center transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedinIn />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-dark-olive hover:bg-charcoal-green text-cream-light flex items-center justify-center transition-colors"
-                  aria-label="Twitter"
-                >
-                  <FaTwitter />
                 </a>
               </div>
             </div>
@@ -65,28 +47,33 @@ export const Footer: React.FC = () => {
               <h4 className="text-lg font-bold mb-4 text-dark-olive font-heading">Quick Links</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/properties" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    Browse Properties
+                  <Link href="/" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?status=for-sale" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    Properties for Sale
+                  <Link href="/buy" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    Buy Property
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?status=for-rent" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    Properties for Rent
+                  <Link href="/rent" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    Rent Property
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/list" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    List Your Property
                   </Link>
                 </li>
                 <li>
                   <Link href="/services" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    Our Services
+                    Services
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    About Us
+                  <Link href="/faqs" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    FAQs
                   </Link>
                 </li>
                 <li>
@@ -102,23 +89,28 @@ export const Footer: React.FC = () => {
               <h4 className="text-lg font-bold mb-4 text-dark-olive font-heading">Our Locations</h4>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/properties?location=hurghada" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    Hurghada Properties
+                  <Link href="/buy?location=hurghada" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    Hurghada
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?location=al-gouna" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    El Gouna Properties
+                  <Link href="/buy?location=al-gouna" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    Al Gouna
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?location=north-coast" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    North Coast Properties
+                  <Link href="/buy?location=north-coast" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    North Coast
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?location=cairo" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
-                    Cairo Properties
+                  <Link href="/buy?location=cairo" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    Cairo
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/buy?location=london" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    London
                   </Link>
                 </li>
               </ul>
@@ -158,7 +150,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-sage-tan/30 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-dark-olive/70">
-            <p>© {currentYear} Notion Homes. All rights reserved.</p>
+            <p>© {currentYear} Notion Homes INT Limited. All rights reserved.</p>
             <div className="flex gap-6">
               <Link href="/privacy-policy" className="hover:text-dark-olive transition-colors">
                 Privacy Policy

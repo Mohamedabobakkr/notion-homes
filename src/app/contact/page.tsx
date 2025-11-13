@@ -14,7 +14,9 @@ import { InquiryFormData } from '@/types';
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<InquiryFormData>();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<InquiryFormData>({
+    mode: 'onBlur', // Validate on blur (when field loses focus)
+  });
 
   const onSubmit = async (data: InquiryFormData) => {
     setIsSubmitting(true);
@@ -88,7 +90,17 @@ export default function ContactPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <Input
                         label="Your Name *"
-                        {...register('name', { required: 'Name is required' })}
+                        {...register('name', {
+                          required: 'Name is required',
+                          minLength: {
+                            value: 2,
+                            message: 'Name must be at least 2 characters',
+                          },
+                          pattern: {
+                            value: /^[A-Za-z\s'-]+$/,
+                            message: 'Name can only contain letters, spaces, hyphens, and apostrophes',
+                          },
+                        })}
                         error={errors.name?.message}
                         placeholder="John Smith"
                       />
@@ -100,7 +112,7 @@ export default function ContactPage() {
                           required: 'Email is required',
                           pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                            message: 'Invalid email address',
+                            message: 'Please enter a valid email address',
                           },
                         })}
                         error={errors.email?.message}
@@ -111,18 +123,31 @@ export default function ContactPage() {
                     <Input
                       label="Phone Number *"
                       type="tel"
-                      {...register('phone', { required: 'Phone is required' })}
+                      {...register('phone', {
+                        required: 'Phone number is required',
+                        pattern: {
+                          value: /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/,
+                          message: 'Please enter a valid phone number',
+                        },
+                        minLength: {
+                          value: 10,
+                          message: 'Phone number must be at least 10 digits',
+                        },
+                      })}
                       error={errors.phone?.message}
                       placeholder="+44 20 1234 5678"
                     />
 
                     <div>
-                      <label className="block text-sm font-medium text-cream-light mb-2">
+                      <label className="block text-sm font-medium text-dark-olive mb-2">
                         Property Interest
                       </label>
                       <select
                         {...register('propertyInterest')}
-                        className="w-full px-4 py-3 bg-slate-gray border border-sage-tan/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-tan text-cream-light"
+                        className="w-full px-4 py-3 bg-white border-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-tan text-dark-olive"
+                        style={{
+                          borderColor: '#C8B898'
+                        }}
                       >
                         <option value="">Select an option</option>
                         <option value="buy">Looking to Buy</option>
@@ -159,76 +184,82 @@ export default function ContactPage() {
               {/* Contact Info */}
               <div className="space-y-6">
                 {/* Phone */}
-                <Card className="p-6 !bg-charcoal-green">
+                <Card className="p-6 !bg-cream-card">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0">
                       <FaPhone className="text-sage-tan text-xl" />
                     </div>
-                    <div>
-                      <h3 className="font-bold text-cream-light mb-2">Call Us</h3>
-                      <p className="text-cream-light mb-1">
+                    <div className="flex-1">
+                      <h3 className="font-bold text-dark-olive mb-3">Call Us</h3>
+                      <a
+                        href={`tel:${contactInfo.phone.uk.replace(/\s/g, '')}`}
+                        className="block text-dark-olive hover:text-olive-green hover:underline transition-colors mb-2"
+                      >
                         <strong>UK:</strong> {contactInfo.phone.uk}
-                      </p>
-                      <p className="text-cream-light">
+                      </a>
+                      <a
+                        href={`tel:${contactInfo.phone.egypt.replace(/\s/g, '')}`}
+                        className="block text-dark-olive hover:text-olive-green hover:underline transition-colors"
+                      >
                         <strong>Egypt:</strong> {contactInfo.phone.egypt}
-                      </p>
+                      </a>
                     </div>
                   </div>
                 </Card>
 
                 {/* Email */}
-                <Card className="p-6 !bg-charcoal-green">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <Card className="p-6 !bg-cream-card">
+                  <a
+                    href={`mailto:${contactInfo.email}`}
+                    className="flex items-start gap-4 group"
+                  >
+                    <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-sage-tan/30 transition-colors">
                       <FaEnvelope className="text-sage-tan text-xl" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-cream-light mb-2">Email Us</h3>
-                      <a
-                        href={`mailto:${contactInfo.email}`}
-                        className="text-cream-light hover:text-cream-light transition-colors"
-                      >
+                      <h3 className="font-bold text-dark-olive mb-2 group-hover:text-olive-green transition-colors">Email Us</h3>
+                      <p className="text-dark-olive text-sm group-hover:underline">
                         {contactInfo.email}
-                      </a>
+                      </p>
                     </div>
-                  </div>
+                  </a>
                 </Card>
 
                 {/* WhatsApp */}
-                <Card className="p-6 !bg-slate-gray border-sage-tan/20">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0">
+                <Card className="p-6 !bg-cream-card">
+                  <a
+                    href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-4 group"
+                  >
+                    <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-sage-tan/30 transition-colors">
                       <FaWhatsapp className="text-sage-tan text-xl" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-cream-light mb-2">WhatsApp</h3>
-                      <a
-                        href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-cream-light hover:text-cream-light font-medium"
-                      >
-                        Chat with us now →
-                      </a>
+                      <h3 className="font-bold text-dark-olive mb-2 group-hover:text-olive-green transition-colors">WhatsApp</h3>
+                      <p className="text-dark-olive text-sm group-hover:underline">
+                        {contactInfo.whatsapp}
+                      </p>
                     </div>
-                  </div>
+                  </a>
                 </Card>
 
                 {/* Offices */}
-                <Card className="p-6 !bg-charcoal-green">
+                <Card className="p-6 !bg-cream-card">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-sage-tan/20 rounded-full flex items-center justify-center flex-shrink-0">
                       <FaMapMarkerAlt className="text-sage-tan text-xl" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-cream-light mb-2">Our Offices</h3>
-                      <div className="space-y-3 text-sm text-cream-light">
+                      <h3 className="font-bold text-dark-olive mb-2">Our Offices</h3>
+                      <div className="space-y-3 text-sm text-dark-olive">
                         <div>
-                          <p className="font-medium text-cream-light mb-1">UK Office</p>
+                          <p className="font-medium text-dark-olive mb-1">UK Office</p>
                           <p>{contactInfo.address.uk}</p>
                         </div>
                         <div>
-                          <p className="font-medium text-cream-light mb-1">Egypt Office</p>
+                          <p className="font-medium text-dark-olive mb-1">Egypt Office</p>
                           <p>{contactInfo.address.egypt}</p>
                         </div>
                       </div>

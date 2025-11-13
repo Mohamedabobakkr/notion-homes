@@ -1,12 +1,13 @@
 import { createClient } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { apiVersion, dataset, projectId } from '@/sanity/env';
 
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  apiVersion: '2024-01-01',
-  useCdn: false, // Disabled CDN for testing - re-enable once data is confirmed working
+  projectId,
+  dataset,
+  apiVersion,
+  useCdn: true, // CDN enabled for production performance
 });
 
 const builder = imageUrlBuilder(client);

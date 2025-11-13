@@ -1,363 +1,137 @@
 'use client';
 
-import { useState, useMemo, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { FaFilter } from 'react-icons/fa';
 import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
-import { Checkbox } from '@/components/ui/Checkbox';
-import { PropertyCard } from '@/components/features/PropertyCard';
-import { PropertyCardSkeleton } from '@/components/ui/Skeleton';
-import { getAllProperties } from '@/lib/sanity-queries';
-import { Property, PropertyFilters, PropertySort, PropertyType, PropertyStatus, PropertyLocation } from '@/types';
 
-function PropertiesContent() {
-  const searchParams = useSearchParams();
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState<PropertyFilters>({});
-  const [sortBy, setSortBy] = useState<PropertySort>({ field: 'featured', order: 'desc' });
-  const [showFilters, setShowFilters] = useState(false);
+export default function PropertiesIntentPage() {
+  const services = [
+    {
+      title: 'Buy Property',
+      description: 'Explore our exclusive collection of properties for sale across Egypt\'s most desirable locations.',
+      icon: (
+        <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+      ),
+      href: '/buy',
+      color: 'from-olive-green/20 to-olive-green/5',
+    },
+    {
+      title: 'Rent Property',
+      description: 'Find your perfect rental home with flexible terms and premium locations.',
+      icon: (
+        <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+        </svg>
+      ),
+      href: '/rent',
+      color: 'from-charcoal-green/20 to-charcoal-green/5',
+    },
+    {
+      title: 'List Your Property',
+      description: 'Partner with us to sell or rent your property with professional marketing and support.',
+      icon: (
+        <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ),
+      href: '/list',
+      color: 'from-olive-green/20 to-olive-green/5',
+    },
+    {
+      title: 'Other Services',
+      description: 'Discover our full range of property services including investment consulting and property management.',
+      icon: (
+        <svg className="w-full h-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      href: '/contact',
+      color: 'from-charcoal-green/20 to-charcoal-green/5',
+    },
+  ];
 
-  // Initialize filters from URL parameters
-  useEffect(() => {
-    const statusParam = searchParams.get('status');
-    const locationParam = searchParams.get('location');
-    const typeParam = searchParams.get('type');
-
-    const initialFilters: PropertyFilters = {};
-
-    if (statusParam && (statusParam === 'for-sale' || statusParam === 'for-rent')) {
-      initialFilters.status = [statusParam as PropertyStatus];
-    }
-
-    if (locationParam && ['hurghada', 'al-gouna', 'north-coast', 'cairo', 'london'].includes(locationParam)) {
-      initialFilters.location = [locationParam as PropertyLocation];
-    }
-
-    if (typeParam && ['villa', 'apartment', 'penthouse'].includes(typeParam)) {
-      initialFilters.type = [typeParam as PropertyType];
-    }
-
-    if (Object.keys(initialFilters).length > 0) {
-      setFilters(initialFilters);
-    }
-  }, [searchParams]);
-
-  // Fetch properties from Sanity
-  useEffect(() => {
-    async function fetchProperties() {
-      setLoading(true);
-      const data = await getAllProperties();
-      setProperties(data);
-      setLoading(false);
-    }
-    fetchProperties();
-  }, []);
-
-  // Filter and sort properties
-  const filteredAndSortedProperties = useMemo(() => {
-    let result = [...properties];
-
-    // Apply filters
-    if (filters.status && filters.status.length > 0) {
-      result = result.filter(p =>
-        filters.status!.includes(p.status) || p.status === 'both'
-      );
-    }
-
-    if (filters.type && filters.type.length > 0) {
-      result = result.filter(p => filters.type!.includes(p.type));
-    }
-
-    if (filters.location && filters.location.length > 0) {
-      result = result.filter(p => filters.location!.includes(p.location));
-    }
-
-    if (filters.bedrooms && filters.bedrooms.length > 0) {
-      result = result.filter(p => filters.bedrooms!.includes(p.bedrooms));
-    }
-
-    if (filters.priceRange) {
-      result = result.filter(p =>
-        p.priceGBP >= (filters.priceRange!.min || 0) &&
-        p.priceGBP <= (filters.priceRange!.max || Infinity)
-      );
-    }
-
-    // Apply sorting
-    result.sort((a, b) => {
-      let comparison = 0;
-
-      switch (sortBy.field) {
-        case 'price':
-          comparison = a.priceGBP - b.priceGBP;
-          break;
-        case 'featured':
-          comparison = (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
-          break;
-        default:
-          comparison = 0;
-      }
-
-      return sortBy.order === 'desc' ? -comparison : comparison;
-    });
-
-    return result;
-  }, [properties, filters, sortBy]);
-
-  const toggleFilter = (
-    filterType: keyof PropertyFilters,
-    value: any
-  ) => {
-    setFilters(prev => {
-      const currentValues = (prev[filterType] as any[]) || [];
-      const newValues = currentValues.includes(value)
-        ? currentValues.filter(v => v !== value)
-        : [...currentValues, value];
-
-      return {
-        ...prev,
-        [filterType]: newValues.length > 0 ? newValues : undefined,
-      };
-    });
-  };
-
-  if (loading) {
-    return (
-      <main className="pt-32 pb-20 bg-dark-olive">
+  return (
+    <main className="min-h-screen bg-cream-light">
+      <section className="py-16 md:py-24">
         <Container>
-          {/* Page Header Skeleton */}
+          {/* Header */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
-              Browse <span className="text-cream-light">Our Properties</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-text-primary mb-6">
+              How Can We Help You?
             </h1>
-            <p className="text-cream-light text-lg md:text-xl max-w-3xl mx-auto">
-              Loading properties...
+            <p className="text-lg md:text-xl text-text-primary/70 max-w-3xl mx-auto">
+              Select the service that best matches your needs, and we'll guide you to the perfect solution.
             </p>
           </motion.div>
 
-          {/* Skeleton Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <PropertyCardSkeleton key={i} />
-            ))}
-          </div>
-        </Container>
-      </main>
-    );
-  }
-
-  return (
-    <main className="pt-32 pb-20 bg-dark-olive">
-      <Container>
-        {/* Page Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-12 text-center"
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
-            Browse <span className="text-cream-light">Our Properties</span>
-          </h1>
-          <p className="text-cream-light text-lg md:text-xl max-w-3xl mx-auto">
-            Explore our extensive collection of luxury properties across Egypt and London's most desirable locations.
-          </p>
-        </motion.div>
-
-        {/* Filters and Controls */}
-        <div className="mb-8">
-          <div className="bg-charcoal-green rounded-xl shadow-md p-6">
-            {/* Mobile Filter Toggle */}
-            <div className="flex items-center justify-between mb-6 lg:hidden">
-              <Button
-                onClick={() => setShowFilters(!showFilters)}
-                variant="outline"
-                icon={<FaFilter />}
-              >
-                Filters
-              </Button>
-              <select
-                value={`${sortBy.field}-${sortBy.order}`}
-                onChange={(e) => {
-                  const [field, order] = e.target.value.split('-');
-                  setSortBy({ field: field as any, order: order as any });
-                }}
-                className="px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-tan"
-                style={{
-                  backgroundColor: '#F5F3EF',
-                  borderColor: '#C8B898',
-                  color: '#1A1A1A',
-                  borderWidth: '2px'
-                }}
-              >
-                <option value="featured-desc" style={{ color: '#1A1A1A' }}>Featured First</option>
-                <option value="price-asc" style={{ color: '#1A1A1A' }}>Price: Low to High</option>
-                <option value="price-desc" style={{ color: '#1A1A1A' }}>Price: High to Low</option>
-              </select>
-            </div>
-
-            {/* Desktop Filters */}
-            <div className={`grid grid-cols-1 lg:grid-cols-5 gap-6 ${showFilters || 'hidden lg:grid'}`}>
-              {/* Status Filter */}
-              <div>
-                <h3 className="font-bold text-dark-olive mb-4">Status</h3>
-                <div className="space-y-3">
-                  {(['for-sale', 'for-rent'] as PropertyStatus[]).map(status => (
-                    <Checkbox
-                      key={status}
-                      checked={filters.status?.includes(status) || false}
-                      onChange={() => toggleFilter('status', status)}
-                      label={status.replace('-', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Type Filter */}
-              <div>
-                <h3 className="font-bold text-dark-olive mb-4">Property Type</h3>
-                <div className="space-y-3">
-                  {(['villa', 'apartment', 'penthouse'] as PropertyType[]).map(type => (
-                    <Checkbox
-                      key={type}
-                      checked={filters.type?.includes(type) || false}
-                      onChange={() => toggleFilter('type', type)}
-                      label={type.charAt(0).toUpperCase() + type.slice(1)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Location Filter */}
-              <div>
-                <h3 className="font-bold text-dark-olive mb-4">Location</h3>
-                <div className="space-y-3">
-                  {(['hurghada', 'al-gouna', 'north-coast', 'cairo', 'london'] as PropertyLocation[]).map(loc => (
-                    <Checkbox
-                      key={loc}
-                      checked={filters.location?.includes(loc) || false}
-                      onChange={() => toggleFilter('location', loc)}
-                      label={loc.replace('-', ' ').split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Bedrooms Filter */}
-              <div>
-                <h3 className="font-bold text-dark-olive mb-4">Bedrooms</h3>
-                <div className="space-y-3">
-                  {[1, 2, 3, 4, 5].map(beds => (
-                    <Checkbox
-                      key={beds}
-                      checked={filters.bedrooms?.includes(beds) || false}
-                      onChange={() => toggleFilter('bedrooms', beds)}
-                      label={`${beds}+ Beds`}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Sort (Desktop) */}
-              <div className="hidden lg:block">
-                <h3 className="font-bold text-dark-olive mb-3">Sort By</h3>
-                <select
-                  value={`${sortBy.field}-${sortBy.order}`}
-                  onChange={(e) => {
-                    const [field, order] = e.target.value.split('-');
-                    setSortBy({ field: field as any, order: order as any });
-                  }}
-                  className="w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-sage-tan"
-                  style={{
-                    backgroundColor: '#F5F3EF',
-                    borderColor: '#C8B898',
-                    color: '#1A1A1A',
-                    borderWidth: '2px'
-                  }}
-                >
-                  <option value="featured-desc" style={{ color: '#1A1A1A' }}>Featured First</option>
-                  <option value="price-asc" style={{ color: '#1A1A1A' }}>Price: Low to High</option>
-                  <option value="price-desc" style={{ color: '#1A1A1A' }}>Price: High to Low</option>
-                </select>
-              </div>
-            </div>
-
-            {/* Clear Filters */}
-            {Object.keys(filters).length > 0 && (
-              <div className="mt-6 text-center">
-                <button
-                  onClick={() => setFilters({})}
-                  className="text-sage-tan hover:text-cream-light font-medium underline transition-colors"
-                >
-                  Clear all filters
-                </button>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Results Count */}
-        <div className="mb-6 text-cream-light">
-          Showing {filteredAndSortedProperties.length} {filteredAndSortedProperties.length === 1 ? 'property' : 'properties'}
-        </div>
-
-        {/* Properties Grid */}
-        {filteredAndSortedProperties.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredAndSortedProperties.map((property, index) => (
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {services.map((service, index) => (
               <motion.div
-                key={property.id}
-                initial={{ opacity: 0, y: 20 }}
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <PropertyCard property={property} />
+                <Link href={service.href}>
+                  <div className={`
+                    group relative overflow-hidden
+                    bg-gradient-to-br ${service.color}
+                    border-2 border-border-light
+                    rounded-2xl p-8
+                    hover:border-olive-green
+                    hover:shadow-xl
+                    transition-all duration-300
+                    cursor-pointer
+                    h-full
+                  `}>
+                    {/* Icon */}
+                    <div className="w-16 h-16 mb-6 text-olive-green transform group-hover:scale-110 transition-transform duration-300">
+                      {service.icon}
+                    </div>
+
+                    {/* Content */}
+                    <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-4 group-hover:text-olive-green transition-colors">
+                      {service.title}
+                    </h2>
+                    <p className="text-text-primary/70 mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+
+                    {/* CTA */}
+                    <div className="inline-flex items-center gap-2 text-olive-green font-semibold group-hover:gap-4 transition-all">
+                      <span>Get Started</span>
+                      <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+
+                    {/* Decorative gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-olive-green/0 to-olive-green/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
-        ) : (
-          <div className="text-center py-16">
-            <p className="text-xl text-cream-light mb-4">No properties found matching your criteria.</p>
-            <Button onClick={() => setFilters({})}>Clear Filters</Button>
-          </div>
-        )}
-      </Container>
-    </main>
-  );
-}
 
-export default function PropertiesPage() {
-  return (
-    <Suspense fallback={
-      <main className="pt-32 pb-20 bg-dark-olive">
-        <Container>
+          {/* Back to Home Link */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mb-12 text-center"
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-center mt-12"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6">
-              Browse <span className="text-cream-light">Our Properties</span>
-            </h1>
-            <p className="text-cream-light text-lg md:text-xl max-w-3xl mx-auto">
-              Loading properties...
-            </p>
+            <Link href="/" className="text-text-primary/60 hover:text-olive-green transition-colors">
+              ← Back to Home
+            </Link>
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <PropertyCardSkeleton key={i} />
-            ))}
-          </div>
         </Container>
-      </main>
-    }>
-      <PropertiesContent />
-    </Suspense>
+      </section>
+    </main>
   );
 }

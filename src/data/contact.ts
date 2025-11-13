@@ -2,11 +2,11 @@ import { ContactInfo } from '@/types';
 
 export const contactInfo: ContactInfo = {
   phone: {
-    uk: '+44 20 1234 5678',
-    egypt: '+20 100 123 4567',
+    uk: '+44 208 2646 716',
+    egypt: 'TBC',
   },
-  email: 'info@notionhomes.com',
-  whatsapp: '+447123456789',
+  email: 'notionhomes@outlook.com',
+  whatsapp: '+44 208 2646 716',
   address: {
     uk: '123 Kensington High Street, London, W8 5SA, United Kingdom',
     egypt: 'Marina Boulevard, El Gouna, Red Sea, Egypt',

@@ -32,9 +32,10 @@ export const truncateText = (text: string, maxLength: number): string => {
 export const getLocationLabel = (location: string): string => {
   const labels: Record<string, string> = {
     'hurghada': 'Hurghada',
-    'al-gouna': 'El Gouna',
+    'al-gouna': 'Al Gouna',
     'north-coast': 'North Coast',
     'cairo': 'Cairo',
+    'london': 'London',
   };
   return labels[location] || location;
 };
@@ -46,35 +47,4 @@ export const getPropertyTypeLabel = (type: string): string => {
     'penthouse': 'Penthouse',
   };
   return labels[type] || type;
-};
-
-// Session storage utilities for favorites
-export const getFavorites = (): string[] => {
-  if (typeof window === 'undefined') return [];
-  const favorites = sessionStorage.getItem('favorites');
-  return favorites ? JSON.parse(favorites) : [];
-};
-
-export const saveFavorites = (favorites: string[]): void => {
-  if (typeof window === 'undefined') return;
-  sessionStorage.setItem('favorites', JSON.stringify(favorites));
-};
-
-export const toggleFavorite = (propertyId: string): string[] => {
-  const favorites = getFavorites();
-  const index = favorites.indexOf(propertyId);
-
-  if (index > -1) {
-    favorites.splice(index, 1);
-  } else {
-    favorites.push(propertyId);
-  }
-
-  saveFavorites(favorites);
-  return favorites;
-};
-
-export const isFavorite = (propertyId: string): boolean => {
-  const favorites = getFavorites();
-  return favorites.includes(propertyId);
 };

@@ -105,3 +105,14 @@ export interface InquiryFormData {
 export interface NewsletterFormData {
   email: string;
 }
+
+export type FAQCategory = 'general' | 'buying' | 'renting' | 'selling' | 'financing' | 'legal';
+
+export interface FAQ {
+  id: string;
+  question: string;
+  answer: string;
+  category: FAQCategory;
+  order: number;
+  isPublished: boolean;
+}

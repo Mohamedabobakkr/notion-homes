@@ -20,9 +20,12 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           className={`
             w-full px-4 py-3
             border border-sand-200 rounded-lg
-            focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent
+            bg-white text-dark-olive
+            placeholder:text-gray-500
+            focus:outline-none focus:ring-2 focus:ring-sage-tan focus:border-transparent
             transition-all duration-200
             min-h-[120px]
+            resize-vertical
             ${error ? 'border-red-500' : ''}
             ${className}
           `}
