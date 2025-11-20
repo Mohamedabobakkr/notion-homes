@@ -26,6 +26,7 @@
     "next": "16.0.1",
     "next-sanity": "^11.6.5",
     "next-seo": "^7.0.1",
+    "nodemailer": "^7.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0",
     "react-hook-form": "^7.66.0",
@@ -34,11 +35,13 @@
     "sanity": "^4.14.2",
     "styled-components": "^6.1.19",
     "swiper": "^12.0.3",
-    "yet-another-react-lightbox": "^3.25.0"
+    "yet-another-react-lightbox": "^3.25.0",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

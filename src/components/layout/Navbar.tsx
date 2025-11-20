@@ -8,7 +8,6 @@ import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/buy', label: 'Buy' },
   { href: '/rent', label: 'Rent' },
   { href: '/list', label: 'List' },
@@ -37,11 +36,10 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? 'shadow-md py-4'
           : 'py-5'
-      }`}
+        }`}
       style={{ backgroundColor: '#0A3B28' }}
     >
       <Container>
@@ -91,11 +89,10 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
-                  pathname === link.href
+                className={`text-sm font-medium transition-colors ${pathname === link.href
                     ? 'font-semibold'
                     : 'hover:opacity-80'
-                }`}
+                  }`}
                 style={{ color: '#DBC086' }}
               >
                 {link.label}
@@ -136,11 +133,10 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`block text-base font-medium transition-all hover:translate-x-2 ${
-                  pathname === link.href
+                className={`block text-base font-medium transition-all hover:translate-x-2 ${pathname === link.href
                     ? 'font-semibold'
                     : ''
-                }`}
+                  }`}
                 style={{
                   color: '#DBC086',
                   animation: `slideDown 0.3s ease-out ${index * 0.05}s both`

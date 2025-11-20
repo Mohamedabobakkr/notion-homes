@@ -199,7 +199,7 @@ function BuyContent() {
               <div>
                 <h3 className="font-bold text-dark-olive mb-4">Property Type</h3>
                 <div className="space-y-3">
-                  {(['villa', 'apartment', 'penthouse'] as PropertyType[]).map(type => (
+                  {Array.from(new Set(properties.map(p => p.type))).map(type => (
                     <Checkbox
                       key={type}
                       checked={filters.type?.includes(type) || false}
@@ -214,7 +214,7 @@ function BuyContent() {
               <div>
                 <h3 className="font-bold text-dark-olive mb-4">Location</h3>
                 <div className="space-y-3">
-                  {(['hurghada', 'al-gouna', 'north-coast', 'cairo', 'london'] as PropertyLocation[]).map(loc => (
+                  {Array.from(new Set(properties.map(p => p.location))).map(loc => (
                     <Checkbox
                       key={loc}
                       checked={filters.location?.includes(loc) || false}

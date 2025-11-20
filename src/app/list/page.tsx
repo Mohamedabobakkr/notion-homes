@@ -43,11 +43,19 @@ export default function ListPage() {
     setIsSubmitting(true);
 
     try {
-      // TODO: Send to Sanity CMS or email API
-      console.log('Property submission:', data);
+      const response = await fetch('/api/list', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit listing');
+      }
 
       toast.success('Property listing submitted successfully! We will review and contact you soon.');
       reset();

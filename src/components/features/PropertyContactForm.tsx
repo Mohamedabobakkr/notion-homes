@@ -19,11 +19,44 @@ export const PropertyContactForm: React.FC<PropertyContactFormProps> = ({ proper
     message: `Hi, I'm interested in ${property.title}`
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you can add form submission logic
-    console.log('Form submitted:', formData);
-    alert('Thank you for your inquiry! We will contact you soon.');
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/inquire', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          propertyId: property.id,
+          propertyTitle: property.title,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to submit inquiry');
+      }
+
+      alert('Thank you for your inquiry! We will contact you soon.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: `Hi, I'm interested in ${property.title}`
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to send inquiry. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -44,7 +77,7 @@ export const PropertyContactForm: React.FC<PropertyContactFormProps> = ({ proper
             type="text"
             required
             value={formData.name}
-            onChange={(e) => setFormData({...formData, name: e.target.value})}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none transition-all"
             placeholder="John Doe"
             style={{
@@ -69,7 +102,7 @@ export const PropertyContactForm: React.FC<PropertyContactFormProps> = ({ proper
             type="email"
             required
             value={formData.email}
-            onChange={(e) => setFormData({...formData, email: e.target.value})}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none transition-all"
             placeholder="john@example.com"
             style={{
@@ -93,7 +126,7 @@ export const PropertyContactForm: React.FC<PropertyContactFormProps> = ({ proper
             id="phone"
             type="tel"
             value={formData.phone}
-            onChange={(e) => setFormData({...formData, phone: e.target.value})}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none transition-all"
             placeholder="+44 20 1234 5678"
             style={{
@@ -117,7 +150,7 @@ export const PropertyContactForm: React.FC<PropertyContactFormProps> = ({ proper
             id="message"
             rows={4}
             value={formData.message}
-            onChange={(e) => setFormData({...formData, message: e.target.value})}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             className="w-full px-4 py-3 rounded-lg border-2 focus:outline-none resize-none transition-all"
             style={{
               backgroundColor: '#F5F3EF',
@@ -128,8 +161,14 @@ export const PropertyContactForm: React.FC<PropertyContactFormProps> = ({ proper
           />
         </div>
 
-        <Button type="submit" fullWidth variant="filled" className="!bg-sage-tan !text-dark-olive hover:!bg-sage-tan/90 font-semibold">
-          Submit Inquiry
+        <Button
+          type="submit"
+          fullWidth
+          variant="filled"
+          className="!bg-sage-tan !text-dark-olive hover:!bg-sage-tan/90 font-semibold"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
         </Button>
       </form>
 

@@ -20,24 +20,30 @@ export const Footer: React.FC = () => {
               <p className="text-dark-olive/90 mb-6 leading-relaxed">
                 Your trusted bridge between UK and Egyptian real estate. Specializing in luxury properties across Egypt's most sought-after destinations.
               </p>
-              <div className="flex space-x-4">
+              <div className="flex flex-col space-y-3">
                 <a
                   href="https://www.facebook.com/profile.php?id=61583631207320"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-dark-olive hover:bg-charcoal-green text-cream-light flex items-center justify-center transition-colors"
+                  className="flex items-center gap-3 text-dark-olive hover:text-sage-tan transition-colors group"
                   aria-label="Facebook"
                 >
-                  <FaFacebookF />
+                  <div className="w-10 h-10 rounded-full bg-dark-olive group-hover:bg-charcoal-green text-cream-light flex items-center justify-center transition-colors">
+                    <FaFacebookF />
+                  </div>
+                  <span className="font-medium">Facebook</span>
                 </a>
                 <a
                   href="https://www.instagram.com/notion.homes/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-dark-olive hover:bg-charcoal-green text-cream-light flex items-center justify-center transition-colors"
+                  className="flex items-center gap-3 text-dark-olive hover:text-sage-tan transition-colors group"
                   aria-label="Instagram"
                 >
-                  <FaInstagram />
+                  <div className="w-10 h-10 rounded-full bg-dark-olive group-hover:bg-charcoal-green text-cream-light flex items-center justify-center transition-colors">
+                    <FaInstagram />
+                  </div>
+                  <span className="font-medium">Instagram</span>
                 </a>
               </div>
             </div>

@@ -24,22 +24,26 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.05 }}
-          className="bg-charcoal-green rounded-lg shadow-md overflow-hidden"
+          className={`border rounded-lg overflow-hidden transition-all duration-300 ${openId === faq.id
+            ? 'bg-charcoal-green border-sage-tan/50 shadow-lg'
+            : 'bg-charcoal-green/30 border-sage-tan/20 hover:border-sage-tan/40'
+            }`}
         >
           <button
             onClick={() => toggleFAQ(faq.id)}
-            className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-opacity-80 transition-all"
+            className="w-full px-6 py-5 flex items-center justify-between text-left group"
             aria-expanded={openId === faq.id}
           >
-            <span className="text-lg font-semibold text-cream-light pr-4">
+            <span className={`text-lg font-medium pr-8 transition-colors duration-300 ${openId === faq.id ? 'text-sage-tan' : 'text-dark-olive group-hover:text-sage-tan'
+              }`}>
               {faq.question}
             </span>
             <motion.div
               animate={{ rotate: openId === faq.id ? 180 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="flex-shrink-0"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className={`flex-shrink-0 ${openId === faq.id ? 'text-sage-tan' : 'text-sage-tan/70'}`}
             >
-              <FaChevronDown className="text-sage-tan text-xl" />
+              <FaChevronDown className="text-xl" />
             </motion.div>
           </button>
 
@@ -49,9 +53,9 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <div className="px-6 pb-6 pt-2 text-cream-light opacity-90 leading-relaxed whitespace-pre-line">
+                <div className="px-6 pb-6 pt-2 text-cream-light/90 leading-relaxed whitespace-pre-line border-t border-sage-tan/10 mx-6 mt-2">
                   {faq.answer}
                 </div>
               </motion.div>
