@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { toast } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import { FaHome, FaBed, FaBath, FaRulerCombined, FaPoundSign, FaUser } from 'react-icons/fa';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
@@ -69,6 +69,7 @@ export default function ListPage() {
 
   return (
     <main className="pt-32 pb-20 bg-dark-olive">
+      <Toaster position="top-center" />
       <Container>
         {/* Page Header */}
         <motion.div
