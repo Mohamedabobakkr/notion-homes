@@ -1,4 +1,5 @@
 import nodemailer from 'nodemailer';
+import { logger } from './logger';
 
 interface EmailPayload {
     to: string;
@@ -27,10 +28,17 @@ export const sendEmail = async (data: EmailPayload) => {
 
     try {
         const info = await transporter.sendMail(mailOptions);
-        console.log('Message sent: %s', info.messageId);
+        logger.info('Email sent successfully', {
+            messageId: info.messageId,
+            to: data.to,
+            subject: data.subject,
+        });
         return true;
     } catch (error) {
-        console.error('Error sending email:', error);
+        logger.error('Failed to send email', error, {
+            to: data.to,
+            subject: data.subject,
+        });
         return false;
     }
 };
