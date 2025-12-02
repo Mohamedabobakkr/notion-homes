@@ -20,6 +20,11 @@ export const Footer: React.FC = () => {
               <p className="text-dark-olive/90 mb-6 leading-relaxed">
                 Your trusted bridge between UK and Egyptian real estate. Specializing in luxury properties across Egypt's most sought-after destinations.
               </p>
+              {contactInfo.companyNumber && (
+                <p className="text-dark-olive/80 text-sm mb-6">
+                  Company No. {contactInfo.companyNumber}
+                </p>
+              )}
               <div className="flex flex-col space-y-3">
                 <a
                   href="https://www.facebook.com/profile.php?id=61583631207320"
@@ -97,6 +102,11 @@ export const Footer: React.FC = () => {
                 <li>
                   <Link href="/buy?location=hurghada" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
                     Hurghada
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/buy?location=sahl-hasheesh" className="text-dark-olive/80 hover:text-dark-olive transition-colors">
+                    Sahl Hasheesh
                   </Link>
                 </li>
                 <li>

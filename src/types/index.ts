@@ -1,6 +1,6 @@
 export type PropertyType = 'villa' | 'apartment' | 'penthouse';
 export type PropertyStatus = 'for-sale' | 'for-rent' | 'both';
-export type PropertyLocation = 'hurghada' | 'al-gouna' | 'north-coast' | 'cairo' | 'london';
+export type PropertyLocation = 'hurghada' | 'al-gouna' | 'sahl-hasheesh' | 'north-coast' | 'cairo' | 'london';
 
 export interface Property {
   id: string;
@@ -66,6 +66,7 @@ export interface ContactInfo {
   };
   email: string;
   whatsapp: string;
+  companyNumber?: string;
   address: {
     uk: string;
     egypt: string;

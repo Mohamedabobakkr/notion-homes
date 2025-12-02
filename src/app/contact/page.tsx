@@ -235,7 +235,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-dark-olive mb-2 group-hover:text-olive-green transition-colors">Email Us</h3>
-                      <p className="text-dark-olive text-sm group-hover:underline">
+                      <p className="text-dark-olive text-sm group-hover:underline font-bold">
                         {contactInfo.email}
                       </p>
                     </div>
@@ -255,7 +255,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-dark-olive mb-2 group-hover:text-olive-green transition-colors">WhatsApp</h3>
-                      <p className="text-dark-olive text-sm group-hover:underline">
+                      <p className="text-dark-olive text-sm group-hover:underline font-bold">
                         {contactInfo.whatsapp}
                       </p>
                     </div>
@@ -272,11 +272,11 @@ export default function ContactPage() {
                       <h3 className="font-bold text-dark-olive mb-2">Our Offices</h3>
                       <div className="space-y-3 text-sm text-dark-olive">
                         <div>
-                          <p className="font-medium text-dark-olive mb-1">UK Office</p>
+                          <p className="font-bold text-dark-olive mb-1">UK Office</p>
                           <p>{contactInfo.address.uk}</p>
                         </div>
                         <div>
-                          <p className="font-medium text-dark-olive mb-1">Egypt Office</p>
+                          <p className="font-bold text-dark-olive mb-1">Egypt Office</p>
                           <p>{contactInfo.address.egypt}</p>
                         </div>
                       </div>
@@ -289,14 +289,23 @@ export default function ContactPage() {
         </section>
 
         {/* Map Placeholder */}
-        <section className="py-0 bg-dark-olive">
-          <div className="h-96 bg-charcoal-green flex items-center justify-center">
-            <div className="text-center">
-              <FaMapMarkerAlt className="text-6xl text-sage-tan mx-auto mb-4" />
-              <p className="text-cream-light text-lg">Interactive maps would be displayed here</p>
-              <p className="text-sm text-cream-light">Showing our UK and Egypt office locations</p>
+        {/* Map Section */}
+        <section className="py-12 bg-slate-gray">
+          <Container>
+            <div className="h-[500px] w-full relative rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(contactInfo.address.uk)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Notion Homes UK Office"
+                className="w-full h-full"
+              ></iframe>
             </div>
-          </div>
+          </Container>
         </section>
 
         {/* FAQ Section */}

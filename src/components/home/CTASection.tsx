@@ -44,7 +44,7 @@ export const CTASection: React.FC = () => {
               transition={{ duration: 0.2 }}
               className="bg-cream-light/10 hover:bg-cream-light/20 border border-cream-light/30 p-6 rounded-lg flex flex-col items-center gap-3 transition-all backdrop-blur-sm group"
             >
-              <FaWhatsapp className="text-3xl text-[#25D366] group-hover:scale-110 transition-transform" />
+              <FaWhatsapp className="text-3xl text-olive-green group-hover:scale-110 transition-transform" />
               <span className="font-medium text-cream-light">WhatsApp Us</span>
             </motion.a>
 

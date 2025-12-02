@@ -88,7 +88,12 @@ body {
   font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -173,6 +178,7 @@ h4 {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -184,6 +190,7 @@ h4 {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -194,6 +201,7 @@ h4 {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -247,7 +255,8 @@ h4 {
 }
 
 /* Ensure all text is readable */
-p, div {
+p,
+div {
   color: var(--text-primary);
 }
 
@@ -257,15 +266,15 @@ span:not(button span) {
 }
 
 /* Spacing Utilities */
-.space-y-4 > * + * {
+.space-y-4>*+* {
   margin-top: 1rem;
 }
 
-.space-y-6 > * + * {
+.space-y-6>*+* {
   margin-top: 1.5rem;
 }
 
-.space-y-8 > * + * {
+.space-y-8>*+* {
   margin-top: 2rem;
 }
 

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaBars, FaTimes, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 
@@ -13,7 +13,7 @@ const navLinks = [
   { href: '/list', label: 'List' },
   { href: '/services', label: 'Services' },
   { href: '/faqs', label: 'FAQs' },
-  { href: '/contact', label: 'Contact Us' },
+  { href: '/about', label: 'About Us' },
 ];
 
 export const Navbar: React.FC = () => {
@@ -37,8 +37,8 @@ export const Navbar: React.FC = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'shadow-md py-4'
-          : 'py-5'
+        ? 'shadow-md py-4'
+        : 'py-5'
         }`}
       style={{ backgroundColor: '#0A3B28' }}
     >
@@ -89,9 +89,9 @@ export const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${pathname === link.href
-                    ? 'font-semibold'
-                    : 'hover:opacity-80'
+                className={`text-base font-semibold transition-colors ${pathname === link.href
+                  ? 'font-semibold'
+                  : 'hover:opacity-80'
                   }`}
                 style={{ color: '#DBC086' }}
               >
@@ -99,18 +99,14 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
 
-            {/* Locations */}
-            <div className="flex items-center gap-2 text-sm font-medium border-l pl-6" style={{ color: '#DBC086', borderColor: 'rgba(219, 192, 134, 0.3)' }}>
-              <FaMapMarkerAlt style={{ color: '#DBC086' }} />
-              <span style={{ color: '#DBC086' }}>Egypt • London</span>
-            </div>
+
           </div>
 
           {/* Desktop CTA */}
           <div className="hidden lg:block">
             <Link href="/contact">
-              <Button size="md" variant="filled">
-                Book a Tour
+              <Button size="md" variant="outline" className="!border-[#dbc086] !text-[#dbc086] hover:!bg-[#dbc086] hover:!text-white">
+                Get In Touch
               </Button>
             </Link>
           </div>
@@ -134,8 +130,8 @@ export const Navbar: React.FC = () => {
                 key={link.href}
                 href={link.href}
                 className={`block text-base font-medium transition-all hover:translate-x-2 ${pathname === link.href
-                    ? 'font-semibold'
-                    : ''
+                  ? 'font-semibold'
+                  : ''
                   }`}
                 style={{
                   color: '#DBC086',
@@ -146,22 +142,14 @@ export const Navbar: React.FC = () => {
               </Link>
             ))}
 
-            {/* Locations - Mobile */}
-            <div className="flex items-center gap-2 text-sm font-medium pt-2 border-t" style={{
-              color: '#DBC086',
-              borderColor: 'rgba(219, 192, 134, 0.3)',
-              animation: `slideDown 0.3s ease-out ${navLinks.length * 0.05}s both`
-            }}>
-              <FaMapMarkerAlt style={{ color: '#DBC086' }} />
-              <span style={{ color: '#DBC086' }}>Egypt • London</span>
-            </div>
+
 
             <div className="pt-4" style={{
               animation: `slideDown 0.3s ease-out ${(navLinks.length + 1) * 0.05}s both`
             }}>
               <Link href="/contact">
-                <Button fullWidth variant="filled">
-                  Book a Tour
+                <Button fullWidth variant="outline" className="!border-[#dbc086] !text-[#dbc086] hover:!bg-[#dbc086] hover:!text-white">
+                  Get In Touch
                 </Button>
               </Link>
             </div>

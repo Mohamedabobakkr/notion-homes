@@ -14,7 +14,7 @@ export const HeroSection: React.FC = () => {
           <div>
             {/* Tagline */}
             <p className="text-olive-green text-sm md:text-base font-medium tracking-wide mb-6 font-accent">
-              The most trusted property agency in Egypt
+              Your gateway to Egyptian real estate investment and vacation homes
             </p>
 
             {/* Main Heading */}
@@ -46,9 +46,9 @@ export const HeroSection: React.FC = () => {
             <div className="mt-12 pt-8 border-t border-border-light">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                 {[
-                  { value: '500+', label: 'Properties Sold' },
-                  { value: '1000+', label: 'Happy Clients' },
-                  { value: '15+', label: 'Years Experience' },
+                  { value: '50+', label: 'Properties Sold' },
+                  { value: '100+', label: 'Happy Clients' },
+                  { value: '2', label: 'Years Experience' },
                   { value: '4', label: 'Prime Locations' },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
@@ -82,7 +82,7 @@ export const HeroSection: React.FC = () => {
                 </div>
                 <div>
                   <div className="font-bold text-text-primary">Rated 4.9/5</div>
-                  <div className="text-xs text-text-secondary">By 1000+ clients</div>
+                  <div className="text-xs text-text-secondary">By 100+ clients</div>
                 </div>
               </div>
             </div>

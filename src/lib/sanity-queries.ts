@@ -48,7 +48,7 @@ const propertyQuery = `*[_type == "property" && _id == $id][0] {
 }`;
 
 // GROQ query for featured properties
-const featuredPropertiesQuery = `*[_type == "property" && featured == true] | order(_createdAt desc) {
+const featuredPropertiesQuery = `*[_type == "property"] | order(featured desc, _createdAt desc)[0...3] {
   "id": _id,
   title,
   description,

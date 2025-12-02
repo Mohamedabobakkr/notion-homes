@@ -139,14 +139,14 @@ export default function FAQsPage() {
 
   if (loading) {
     return (
-      <main className="pt-32 pb-20 bg-dark-olive min-h-screen">
+      <main className="pt-32 pb-20 bg-cream-light min-h-screen">
         <Container>
           <div className="mb-12 text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6 font-heading">
-              Frequently Asked <span className="text-sage-tan">Questions</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-olive mb-6 font-heading">
+              Frequently Asked Questions
             </h1>
             <div className="flex justify-center">
-              <div className="w-8 h-8 border-4 border-sage-tan border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-8 h-8 border-4 border-dark-olive border-t-transparent rounded-full animate-spin"></div>
             </div>
           </div>
         </Container>
@@ -155,7 +155,7 @@ export default function FAQsPage() {
   }
 
   return (
-    <main className="pt-32 pb-20 bg-dark-olive min-h-screen">
+    <main className="pt-32 pb-20 bg-cream-light min-h-screen">
       <Container>
         {/* Page Header */}
         <motion.div
@@ -163,10 +163,10 @@ export default function FAQsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-16 text-center px-4"
         >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cream-light mb-6 font-heading">
-            Frequently Asked <span className="text-sage-tan">Questions</span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-dark-olive mb-6 font-heading">
+            Frequently Asked Questions
           </h1>
-          <p className="text-lg md:text-xl text-cream-light/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-dark-olive/70 max-w-2xl mx-auto leading-relaxed">
             Everything you need to know about buying, renting, and living in Egypt's premier destinations.
           </p>
         </motion.div>
@@ -188,11 +188,10 @@ export default function FAQsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <div className="flex items-center gap-4 mb-8">
-                  <h2 className="text-2xl md:text-3xl font-bold text-cream-light font-heading">
+                <div className="mb-6">
+                  <h2 className="text-2xl md:text-3xl font-bold text-dark-olive font-heading">
                     {categoryLabels[category]}
                   </h2>
-                  <div className="h-px bg-sage-tan/30 flex-grow"></div>
                 </div>
                 <FAQSection faqs={categoryFAQs} />
               </motion.div>
@@ -201,7 +200,7 @@ export default function FAQsPage() {
 
           {faqs.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-xl text-cream-light mb-4">
+              <p className="text-xl text-dark-olive mb-4">
                 No FAQs available at the moment. Please check back later.
               </p>
             </div>
@@ -216,11 +215,11 @@ export default function FAQsPage() {
           transition={{ delay: 0.2 }}
           className="mt-20 text-center px-4"
         >
-          <div className="bg-charcoal-green/50 backdrop-blur-sm border border-sage-tan/20 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-cream-light mb-4 font-heading">
+          <div className="bg-white border border-dark-olive/10 rounded-2xl p-8 md:p-12 max-w-4xl mx-auto shadow-sm">
+            <h2 className="text-2xl md:text-3xl font-bold text-dark-olive mb-4 font-heading">
               Still have questions?
             </h2>
-            <p className="text-cream-light/80 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-dark-olive/70 text-lg mb-8 max-w-2xl mx-auto">
               We're here to help you navigate your real estate journey. Reach out to our team for personalized support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -238,7 +237,11 @@ export default function FAQsPage() {
                 href={`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 border-2 border-[#DBC086] text-[#DBC086] hover:bg-[#DBC086] hover:text-[#0A3B28]"
+                className="px-8 py-4 rounded-full font-semibold transition-all hover:scale-105 shadow-lg hover:shadow-xl"
+                style={{
+                  backgroundColor: '#0A3B28',
+                  color: '#FFFFFF',
+                }}
               >
                 WhatsApp Us
               </a>

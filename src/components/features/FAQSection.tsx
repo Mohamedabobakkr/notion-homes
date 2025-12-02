@@ -17,33 +17,32 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {faqs.map((faq, index) => (
         <motion.div
           key={faq.id}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.05 }}
-          className={`border rounded-lg overflow-hidden transition-all duration-300 ${openId === faq.id
-            ? 'bg-charcoal-green border-sage-tan/50 shadow-lg'
-            : 'bg-charcoal-green/30 border-sage-tan/20 hover:border-sage-tan/40'
+          className={`border rounded-xl overflow-hidden transition-all duration-300 ${openId === faq.id
+            ? 'bg-white border-dark-olive/20 shadow-md'
+            : 'bg-white border-dark-olive/10 hover:border-dark-olive/20'
             }`}
         >
           <button
             onClick={() => toggleFAQ(faq.id)}
-            className="w-full px-6 py-5 flex items-center justify-between text-left group"
+            className="w-full px-6 py-4 flex items-center justify-between text-left group"
             aria-expanded={openId === faq.id}
           >
-            <span className={`text-lg font-medium pr-8 transition-colors duration-300 ${openId === faq.id ? 'text-sage-tan' : 'text-dark-olive group-hover:text-sage-tan'
-              }`}>
+            <span className={`text-base md:text-lg font-medium pr-8 transition-colors duration-300 text-dark-olive font-heading`}>
               {faq.question}
             </span>
             <motion.div
               animate={{ rotate: openId === faq.id ? 180 : 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className={`flex-shrink-0 ${openId === faq.id ? 'text-sage-tan' : 'text-sage-tan/70'}`}
+              className={`flex-shrink-0 ${openId === faq.id ? 'text-dark-olive' : 'text-dark-olive/50'}`}
             >
-              <FaChevronDown className="text-xl" />
+              <FaChevronDown className="text-base" />
             </motion.div>
           </button>
 
@@ -55,7 +54,7 @@ export default function FAQSection({ faqs }: FAQSectionProps) {
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <div className="px-6 pb-6 pt-2 text-cream-light/90 leading-relaxed whitespace-pre-line border-t border-sage-tan/10 mx-6 mt-2">
+                <div className="px-6 pb-5 pt-2 text-dark-olive/70 leading-relaxed whitespace-pre-line text-sm md:text-base">
                   {faq.answer}
                 </div>
               </motion.div>

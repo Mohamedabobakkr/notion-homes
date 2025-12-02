@@ -27,7 +27,7 @@ function BuyContent() {
 
     const initialFilters: PropertyFilters = {};
 
-    if (locationParam && ['hurghada', 'al-gouna', 'north-coast', 'cairo', 'london'].includes(locationParam)) {
+    if (locationParam && ['hurghada', 'al-gouna', 'sahl-hasheesh', 'north-coast', 'cairo', 'london'].includes(locationParam)) {
       initialFilters.location = [locationParam as PropertyLocation];
     }
 

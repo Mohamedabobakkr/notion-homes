@@ -8,11 +8,12 @@ export const contactInfo: ContactInfo = {
   email: 'notionhomes@outlook.com',
   whatsapp: '+44 208 2646 716',
   address: {
-    uk: '123 Kensington High Street, London, W8 5SA, United Kingdom',
-    egypt: 'Marina Boulevard, El Gouna, Red Sea, Egypt',
+    uk: 'Springhead Pkway, Northfleet, Gravesend, DA11 8AD',
+    egypt: 'South Marina Dr, Sahl Hasheesh, Red Sea, 84521',
   },
+  companyNumber: '16841967',
   coordinates: {
-    uk: { lat: 51.5074, lng: -0.1278 },
-    egypt: { lat: 27.3833, lng: 33.6833 },
+    uk: { lat: 51.4416, lng: 0.3333 }, // Coordinates for Gravesend approx
+    egypt: { lat: 27.0444, lng: 33.8917 }, // Coordinates for Sahl Hasheesh approx
   },
 };
