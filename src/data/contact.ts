@@ -5,7 +5,7 @@ export const contactInfo: ContactInfo = {
     uk: '+44 208 2646 716',
     egypt: 'TBC',
   },
-  email: 'notionhomes@outlook.com',
+  email: 'info@notionhomes.co.uk',
   whatsapp: '+44 208 2646 716',
   address: {
     uk: 'Springhead Pkway, Northfleet, Gravesend, DA11 8AD',
