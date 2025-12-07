@@ -19,7 +19,7 @@ const listingSchema = z.object({
     bathrooms: z.coerce.number().min(1).max(50),
     size: z.coerce.number().min(1).max(100000),
     priceGBP: z.coerce.number().min(1).max(1000000000),
-    priceEGP: z.coerce.number().min(1).max(1000000000).optional(),
+    priceEGP: z.coerce.number().min(1).max(10000000000).optional(), // 10 billion EGP max (~£250m)
     description: z.string().min(50).max(5000),
     features: z.string().max(2000),
 });
