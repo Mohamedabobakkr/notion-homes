@@ -7,6 +7,26 @@ import { NextResponse } from 'next/server';
  * This implements origin-based CSRF protection suitable for API routes
  * that are accessed from the same domain.
  */
+
+// Allowed production domains (both www and non-www)
+const ALLOWED_DOMAINS = [
+  'notionhomes.co.uk',
+  'www.notionhomes.co.uk',
+];
+
+// Helper function to extract domain without www prefix for comparison
+function normalizeDomain(domain: string): string {
+  return domain.replace(/^www\./, '');
+}
+
+// Helper function to check if a host is in the allowed domains list
+function isAllowedDomain(hostToCheck: string): boolean {
+  const normalizedHost = normalizeDomain(hostToCheck);
+  return ALLOWED_DOMAINS.some(domain =>
+    normalizeDomain(domain) === normalizedHost || domain === hostToCheck
+  );
+}
+
 export function validateCsrf(request: Request): NextResponse | null {
   // Only check POST, PUT, DELETE, PATCH methods
   const method = request.method;
@@ -19,18 +39,36 @@ export function validateCsrf(request: Request): NextResponse | null {
 
   // Allow requests from the same origin
   if (origin) {
-    const originHost = new URL(origin).host;
-    if (originHost === host) {
-      return null; // Valid same-origin request
+    try {
+      const originHost = new URL(origin).host;
+      // Check if origin matches host exactly
+      if (originHost === host) {
+        return null; // Valid same-origin request
+      }
+      // Check if both are allowed production domains (handles www vs non-www mismatch)
+      if (host && isAllowedDomain(originHost) && isAllowedDomain(host)) {
+        return null; // Valid request from allowed domain
+      }
+    } catch {
+      // Invalid URL in origin header
     }
   }
 
   // Check referer as fallback
   const referer = request.headers.get('referer');
   if (referer) {
-    const refererHost = new URL(referer).host;
-    if (refererHost === host) {
-      return null; // Valid same-origin request
+    try {
+      const refererHost = new URL(referer).host;
+      // Check if referer matches host exactly
+      if (refererHost === host) {
+        return null; // Valid same-origin request
+      }
+      // Check if both are allowed production domains
+      if (host && isAllowedDomain(refererHost) && isAllowedDomain(host)) {
+        return null; // Valid request from allowed domain
+      }
+    } catch {
+      // Invalid URL in referer header
     }
   }
 
