@@ -72,14 +72,31 @@ export function validateCsrf(request: Request): NextResponse | null {
     }
   }
 
-  // In development, allow localhost variations
+  // In development, allow localhost variations (strict check to prevent bypass)
   if (process.env.NODE_ENV === 'development') {
-    if (
-      origin?.includes('localhost') ||
-      referer?.includes('localhost') ||
-      host?.includes('localhost')
-    ) {
-      return null;
+    try {
+      const isLocalhostOrigin = origin && (
+        new URL(origin).hostname === 'localhost' ||
+        new URL(origin).hostname === '127.0.0.1' ||
+        new URL(origin).hostname.endsWith('.localhost')
+      );
+      const isLocalhostReferer = referer && (
+        new URL(referer).hostname === 'localhost' ||
+        new URL(referer).hostname === '127.0.0.1' ||
+        new URL(referer).hostname.endsWith('.localhost')
+      );
+      const isLocalhostHost = host && (
+        host.startsWith('localhost:') ||
+        host === 'localhost' ||
+        host.startsWith('127.0.0.1:') ||
+        host === '127.0.0.1'
+      );
+
+      if (isLocalhostOrigin || isLocalhostReferer || isLocalhostHost) {
+        return null;
+      }
+    } catch {
+      // Invalid URL format, continue to CSRF rejection
     }
   }
 

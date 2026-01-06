@@ -113,7 +113,6 @@ export async function POST(request: Request) {
         }
 
         logger.info('Property listing submitted successfully', {
-            email: validatedData.ownerEmail,
             propertyTitle: validatedData.propertyTitle,
         });
 

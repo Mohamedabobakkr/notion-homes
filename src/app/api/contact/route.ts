@@ -74,9 +74,7 @@ export async function POST(request: Request) {
             );
         }
 
-        logger.info('Contact form submitted successfully', {
-            email: validatedData.email,
-        });
+        logger.info('Contact form submitted successfully');
 
         return NextResponse.json(
             { message: 'Inquiry sent successfully' },

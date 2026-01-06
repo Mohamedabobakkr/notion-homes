@@ -30,15 +30,10 @@ export const sendEmail = async (data: EmailPayload) => {
         const info = await transporter.sendMail(mailOptions);
         logger.info('Email sent successfully', {
             messageId: info.messageId,
-            to: data.to,
-            subject: data.subject,
         });
         return true;
     } catch (error) {
-        logger.error('Failed to send email', error, {
-            to: data.to,
-            subject: data.subject,
-        });
+        logger.error('Failed to send email', error);
         return false;
     }
 };

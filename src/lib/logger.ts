@@ -24,6 +24,12 @@ class Logger {
     'ssn',
     'auth',
     'authorization',
+    'email',
+    'phone',
+    'phoneNumber',
+    'phone_number',
+    'ownerEmail',
+    'ownerPhone',
   ];
 
   /**

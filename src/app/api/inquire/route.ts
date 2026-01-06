@@ -82,7 +82,6 @@ export async function POST(request: Request) {
         }
 
         logger.info('Property inquiry submitted successfully', {
-            email: validatedData.email,
             propertyId: validatedData.propertyId,
         });
 
