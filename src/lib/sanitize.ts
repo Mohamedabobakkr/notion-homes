@@ -26,20 +26,32 @@ export function sanitizeForEmail(input: string): string {
 /**
  * Sanitizes HTML content by removing potentially dangerous patterns
  * This is a basic implementation for server-side use
+ *
+ * Uses iterative replacement to prevent bypass attacks where removing
+ * one pattern creates another unsafe pattern at the boundary.
  */
 export function sanitizeHtml(dirty: string): string {
-  // Remove script tags and their content
-  let clean = dirty.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+  let clean = dirty;
+  let previous: string;
 
-  // Remove event handlers (onclick, onerror, etc.)
-  clean = clean.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, '');
-  clean = clean.replace(/\s*on\w+\s*=\s*[^\s>]*/gi, '');
+  // Apply sanitization rules iteratively until no more changes occur
+  // This prevents bypass attacks like: "<scrip<script>t>" -> "<script>"
+  do {
+    previous = clean;
 
-  // Remove javascript: protocol
-  clean = clean.replace(/javascript:/gi, '');
+    // Remove script tags and their content (handles </script >, </script/>, etc.)
+    clean = clean.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script\s*>/gi, '');
 
-  // Remove data: protocol (can be used for XSS)
-  clean = clean.replace(/data:text\/html/gi, '');
+    // Remove event handlers (onclick, onerror, etc.)
+    clean = clean.replace(/\s*on\w+\s*=\s*["'][^"']*["']/gi, '');
+    clean = clean.replace(/\s*on\w+\s*=\s*[^\s>]*/gi, '');
+
+    // Remove dangerous URL protocols
+    clean = clean.replace(/javascript:/gi, '');
+    clean = clean.replace(/vbscript:/gi, '');
+    clean = clean.replace(/data:/gi, '');
+
+  } while (clean !== previous);
 
   // Escape the result for additional safety
   return escapeHtml(clean);
