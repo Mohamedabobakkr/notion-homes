@@ -34,6 +34,23 @@ export const metadata: Metadata = {
   keywords: ["Egypt property", "Hurghada homes", "vacation rentals Egypt", "Egyptian real estate", "UK to Egypt property", "luxury villas Egypt"],
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Notion Homes",
+  url: "https://www.notionhomes.co.uk",
+  publisher: {
+    "@type": "Organization",
+    name: "Notion Homes INT Limited",
+    url: "https://www.notionhomes.co.uk",
+  },
+  creator: {
+    "@type": "Organization",
+    name: "Identeti",
+    url: "https://identeti.com",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -48,6 +65,12 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppButton />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
       </body>
     </html>
   );

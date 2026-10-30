@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { Container } from '@/components/ui/Container';
 import { contactInfo } from '@/data/contact';
+import { IdentetiCredit } from '@/components/layout/IdentetiCredit';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -176,6 +177,7 @@ export const Footer: React.FC = () => {
               </Link>
             </div>
           </div>
+          <IdentetiCredit className="mt-2 flex items-baseline justify-center gap-2 text-sm text-dark-olive/70 md:justify-start" />
         </div>
       </Container>
     </footer>
